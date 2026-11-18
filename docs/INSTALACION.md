@@ -113,7 +113,7 @@ docker compose up --build
 | API | http://localhost:3001 |
 | Mailpit | http://127.0.0.1:8025 |
 
-A **demo pública** no VPS usa `docker-compose.vps.yml` (+ `docker-compose.dominio.yml`) e queda á parte desta guía de concello.
+Para unha demo pública con dominio propio pódense usar `docker-compose.vps.yml` e `docker-compose.dominio.yml` (ver `.env.vps.example` e `.env.dominio.example`).
 
 ## 6. Cl@ve / certificado
 
@@ -128,9 +128,3 @@ A **demo pública** no VPS usa `docker-compose.vps.yml` (+ `docker-compose.domin
 - Avisos e correo: `docs/AVISOS-E-CORREO.md`
 - Operación diaria: `docs/OPERACION.md`
 - Copias: `install.sh` suxire cron ou perfil `backup`; actualización usa `scripts/backup.sh`.
-
-## 8. Export público
-
-```bash
-bash scripts/export-public-tree.sh /tmp/pista-aberta-public
-```

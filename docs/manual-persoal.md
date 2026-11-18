@@ -1,17 +1,17 @@
 # Manual curto para o persoal do concello
 
-Pista Aberta · 10 páxinas (texto; capturas en `docs/capturas/` máis adiante).
+Guía rápida do panel do concello en Pista Aberta.
 
 ## 1. Acceso
 
 1. Abrir a URL do concello (`/c/exemplo` na demo).
-2. **Acceder** → Cl@ve demo (selector) ou correo+OTP.
+2. **Acceder** → Cl@ve, certificado dixital ou código por correo.
 3. Roles: **admin** (panel), **staff** (conserxería), **club_manager** (portal).
 
 ## 2. Panel Inicio
 
 - Contadores do día e tarefas (solicitudes, incidencias, peches).
-- En demo: botón **Restaurar datos de demo** (só con `PA_DEMO`).
+- Liña do día: unha fila por pista coas reservas e o seu estado.
 
 ## 3. Instalacións
 
@@ -42,6 +42,7 @@ Pista Aberta · 10 páxinas (texto; capturas en `docs/capturas/` máis adiante).
 
 - Lista do día, código curto `PA-····` ou cámara.
 - Cartel QR da porta (código diario).
+- Ver tamén [Conserxaría no móbil](./conserxeria-movil.md).
 
 ## 9. Clubs e solicitudes
 
@@ -51,6 +52,5 @@ Pista Aberta · 10 páxinas (texto; capturas en `docs/capturas/` máis adiante).
 ## 10. Informe e datos
 
 - **Informe mensual** (CSV) · Indicadores · Datos abertos / exportar.
-- Bandexa de correo da demo: `/correo/` (Mailpit).
 
-Máis: [Guía do xurado](/demo) · [RXPD](./rxpd-rat.md) · [Operación](./OPERACION.md).
+Máis: [RXPD](./rxpd-rat.md) · [Operación](./OPERACION.md) · [Conserxaría no móbil](./conserxeria-movil.md).

@@ -43,7 +43,7 @@ Data descarga: **2026-10-22**. Pegadas SHA-256 do certificado (openssl `-fingerp
 | `official/dnie/AC004.pem` | AC DNIE 004 | `EBAE9930…046F6C` | `3f7a70b98273db7e026b95da49e9b6930d65829a` ✓ |
 | `official/dnie/AC005.pem` | AC DNIE 005 | `828A22FF…8EE828` | `e70cf3b6c8567629b69be8c95d63d9040085c195` ✓ |
 | `official/dnie/AC006.pem` | AC DNIE 006 | `EDA47E8A…103BBD` | `423bb49739ea4e1be6f47161eab8977bf655b7ee` ✓ |
-| *(demo)* | Pista Aberta DEMO CA | *(local VPS / append)* | n/a |
+| *(demo)* | Pista Aberta DEMO CA | *(xerada con `scripts/demo-ca.sh`)* | n/a |
 
 ## Como rexenerar o paquete
 

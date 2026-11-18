@@ -1,6 +1,6 @@
-# Datos do mapa (landing)
+# Datos de concellos e censo de instalacións
 
-Dataset versionado para o mapa interactivo de `apps/landing`.
+Datos versionados que usa a aplicación: o asistente de alta dun concello (`npm run setup` e o asistente da Deputación) parte deste censo para propor as instalacións, e o mapa de Galicia da web usa os límites municipais. A imaxe Docker da API inclúeos en `/app/data/`.
 
 ## Ficheiros
 
@@ -25,8 +25,7 @@ Dataset versionado para o mapa interactivo de `apps/landing`.
 - **Etiqueta:** instalacións deportivas públicas e privadas (OSM).
 - **Asignación:** centroide → punto-en-polígono contra `concellos.geojson`; agrupación de pistas a &lt; 60 m (`scripts/censo-osm-aggregate.py`).
 - **Licenza dos datos:** © colaboradores de OpenStreetMap, [ODbL](https://opendatacommons.org/licenses/odbl/).
-- **Uso na UI:** o número «N instalacións» calcúlase con `Object.values(data).reduce((s, c) => s + c.count, 0)` — nunca un literal fixo.
-- **Puntos:** cargados só ao seleccionar/ampliar un concello (`instalacions-puntos.json`).
+- **Puntos:** `instalacions-puntos.json` ten a localización de cada instalación, para situalas no mapa ao dar de alta o concello.
 - **Piscinas:** aparecen no censo (`type: piscina`) pero **non** se ofrecen como filtro na app.
 
 ## Rexenerar

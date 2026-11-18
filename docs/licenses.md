@@ -23,7 +23,6 @@ Todas as dependencias de produción revisadas son **software libre** e **compati
 | react / react-dom / react-router-dom | MIT | |
 | i18next / react-i18next | MIT | |
 | lucide-react | ISC | iconas UI |
-| d3-geo | ISC | mapa Galicia (landing) |
 | @fontsource/atkinson-hyperlegible-next | OFL-1.1 | tipografía autoaloxada |
 | @fontsource-variable/bricolage-grotesque | OFL-1.1 | tipografía autoaloxada |
 | jsqr | Apache-2.0 | chunk lazy |

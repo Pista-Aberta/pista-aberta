@@ -3,7 +3,6 @@
 **Data:** 2026-11-02  
 **Base:** `https://demo.pistaaberta.com`  
 **Ferramenta:** `@axe-core/playwright` (WCAG 2.0/2.1/2.2 A+AA)  
-**Criterio CI:** falla con calquera infracción reportada por axe.
 
 ## Resultado
 
@@ -48,14 +47,4 @@
 | mobile /c/proba/admin (sesión) | OK | 0 |
 | mobile /c/proba/admin · UserMenu | OK | 0 |
 
-## Execución
-
-```bash
-# Servidor xa levantado
-BASE_URL=http://127.0.0.1:3000 npm run axe
-
-# CI / local: arranca API+web, escanea e pecha
-AXE_START_LOCAL=1 AXE_WRITE_DOC=1 npm run axe
-```
-
-Script: `scripts/axe-ci.mjs` (REVISION-15: sesión + UserMenu + /c/proba/acceso).
+O exame fíxose con `@axe-core/playwright` sobre a demo, con e sen sesión, en escritorio e en móbil. As pantallas da veciñanza tamén teñen modo de lectura fácil e texto grande (selector «Aa» na cabeceira).

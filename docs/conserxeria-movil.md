@@ -1,49 +1,40 @@
-# Conserxería: verificar check-in no móbil
+# Conserxaría: rexistrar entradas no móbil
 
-Para a proba de 10 minutos (paso 6) e o xurado.
+A conserxaría rexistra as entradas desde o móbil ou desde un ordenador, en `/c/<concello>/conserxeria`. Pode entrar o persoal de conserxaría e a administración do concello.
 
 ## Requisitos
 
-1. **HTTPS** — a cámara só funciona en contexto seguro. Usa `https://demo.pistaaberta.com` (non `http://`).
-2. **Basic auth** da demo (`pista` / ver `internal/demo-basic-auth.txt`).
-3. **Sesión de conserxe ou admin** — SAML mock → Staff (`xoan.conserxe@…`) ou Admin.
-4. **Permisos** — o gateway envía `Permissions-Policy: camera=(self)` e CSP con `media-src 'self' blob:`.
+1. **HTTPS:** a cámara só funciona nunha conexión segura.
+2. **Sesión de conserxaría ou de administración** (Cl@ve, certificado ou código por correo).
+3. **Permiso de cámara** no navegador. A aplicación xa envía `Permissions-Policy: camera=(self)` e unha CSP que permite o vídeo local.
 
-## Camiño A — cámara (recomendado)
+## Xeito A: escanear o QR
 
-1. No móbil: abre `/c/exemplo/conserxeria`.
-2. Premé **Escanear** e acepta o permiso de cámara (traseira se o navegador a ofrece).
-3. Enfoca o QR da reserva (cartel ou pantalla da veciña).
-4. Resultado a pantalla completa ~3 s (válido / non válido cos motivos traducidos).
-5. Se o navegador non ten `BarcodeDetector`, úsase **jsQR** no mesmo fluxo (`inversionAttempts: attemptBoth`).
+1. Preme **Escanear** e acepta o permiso de cámara (úsase a traseira se o navegador a ofrece).
+2. Enfoca o QR da reserva: a pantalla da veciña ou a reserva impresa.
+3. O resultado ocupa a pantalla uns 3 segundos: entrada válida ou o motivo do rexeitamento.
 
-### Que arranxamos (22/10/2026)
+A lectura usa `BarcodeDetector` se o navegador o ten e, se non, `jsQR`, no mesmo fluxo.
 
-**Causa:** o `<video>` só se montaba despois de `setScanning(true)`, e `getUserMedia` engadía o stream a `videoRef.current` **antes** do paint → stream sen UI (pantalla negra / «non funciona»).
+## Xeito B: código curto (sen cámara)
 
-**Fix:** o `<video>` está sempre no DOM (oculto cando non se escanea); `playsinline` + `webkit-playsinline`; erros claros (permiso / sen cámara / ocupada).
+Cada reserva ten un código curto co formato `PA-XXXX`. Escríbeo no campo **Código curto** (vale con ou sen `PA-`) e preme **Validar entrada**.
 
-Evidencia: `media/melloras-ux/14-conserxeria-camera-fake.png` + `scripts/verify-clave-camera.mjs` (fake `getUserMedia`, `videoBefore=1`, `hasStream=true`).
+## Xeito C: lista do día
 
-## Camiño B — código curto (sen cámara)
+Na lista de reservas do día, as confirmadas teñen o botón **Entrada manual**. Se ninguén chega, márcase **Non presentado** e a franxa ofrécese á lista de espera.
 
-1. Na reserva, o código curto ten forma `PA-XXXX`.
-2. Na conserxería, campo **Código curto**: podes escribir `PA-7K2M` ou só `7K2M`.
-3. Premé **Validar e check-in**.
+A lista pódese imprimir («Imprimir folla») para traballar sen móbil.
 
-## Camiño C — lista do día
+## Na demo
 
-Nas reservas do día cun estado «Confirmada», botón **Check-in manual** (rexistra o mesmo endpoint).
-
-## Demo sen móbil
-
-Se `PA_DEMO` / entorno de proba: botón **Simular escaneo do seguinte QR** (reserva confirmada do día).
+Na demo hai un botón **Simular escaneo do seguinte QR**, que rexistra a entrada da seguinte reserva confirmada do día sen necesidade de cámara.
 
 ## Problemas frecuentes
 
-| Síntoma | Causas |
+| Síntoma | Causa habitual |
 |---|---|
-| Cámara non abre / negra | Sen HTTPS; permiso denegado; iOS Safari antigo; (antes) race do `videoRef` — xa arranxado |
-| «Este QR é doutro día» | A reserva non é de hoxe (zona Europe/Madrid) |
-| «Fóra da ventá» | Fóra de ±30 min (norma editable no panel) |
-| Código non atopado | Só busca reservas **de hoxe** dese concello |
+| A cámara non abre ou sae en negro | Conexión sen HTTPS, permiso denegado ou navegador moi antigo |
+| «Este QR é doutro día» | A reserva non é de hoxe (zona horaria Europe/Madrid) |
+| «Fóra da ventá» | Fóra da marxe de entrada (±30 min por defecto, editable nas normas do concello) |
+| Código non atopado | Só se buscan as reservas de hoxe dese concello |
