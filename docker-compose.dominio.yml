@@ -1,0 +1,121 @@
+# Overlay de dominio — Caso A adaptado a proxy Traefik
+# (convive con outros servizos detrás de Traefik).
+# Uso:
+#   docker compose -f docker-compose.vps.yml -f docker-compose.dominio.yml \
+#     --env-file .env.vps --env-file .env.dominio up -d --build
+#
+# Proxy do operador — non tocar proxy-edge a man:
+# - rede externa: proxy (subnet 10.0.1.0/24)
+# - entrypoints: http / https
+# - certresolver: letsencrypt
+# - Outros servizos do VPS: sen cambios
+# Se TCP passthrough de cert.* falla → PARAR e preguntar a Pablo antes de
+# editar /data/proxy (config global).
+
+services:
+  api:
+    environment:
+      APP_BASE_URL: ${APP_BASE_URL}
+      API_BASE_URL: ${API_BASE_URL}
+      COOKIE_SECURE: "1"
+      TRUST_PROXY: ${TRUST_PROXY:-1}
+      PA_DEMO: ${PA_DEMO:-1}
+      PA_DEMO_EMPTY: ${PA_DEMO_EMPTY:-1}
+      DEMO_USERS_FILE: ${DEMO_USERS_FILE:-/config/demo-users.json}
+      DEMO_SETUP_FILE: ${DEMO_SETUP_FILE:-/config/demo-setup.json}
+      DEMO_SNAPSHOT_PATH: ${DEMO_SNAPSHOT_PATH:-/data/demo-snapshot}
+      DEMO_SNAPSHOT_LOCKED: ${DEMO_SNAPSHOT_LOCKED:-0}
+      CERT_LOGIN_ENABLED: "1"
+      CERT_ORIGIN: https://${CERT_HOST}
+      CERT_GATEWAY_SECRET: ${CERT_GATEWAY_SECRET}
+    volumes:
+      - ${DEMO_USERS_HOST_FILE:-./deploy/demo/demo-users.json}:/config/demo-users.json:ro
+      - ${DEMO_SETUP_HOST_FILE:-./deploy/demo/demo-setup.json}:/config/demo-setup.json:ro
+      - pista_appdata:/data
+
+  # Landing estática pública (pistaaberta.com / www)
+  gateway:
+    entrypoint: ["/bin/sh", "/gateway-entrypoint.sh"]
+    environment:
+      ROOT_HOST: ${ROOT_HOST}
+      APP_HOST: ${APP_HOST}
+      CERT_HOST: ${CERT_HOST}
+      CERT_GATEWAY_SECRET: ${CERT_GATEWAY_SECRET}
+      PROXY_SUBNET: ${PROXY_SUBNET}
+      NGINX_ENVSUBST_FILTER: "^(ROOT_HOST|APP_HOST|CERT_HOST|CERT_GATEWAY_SECRET|PROXY_SUBNET)$$"
+    ports:
+      # Backup Funnel/Serve mentres o dominio non estea OK
+      - "127.0.0.1:3140:80"
+    volumes:
+      # Anula o default.conf do compose.vps (sen isto conviven dúas configs :80)
+      - ./deploy/dominio/nginx/empty-default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./deploy/dominio/nginx/app-http.conf.template:/etc/nginx/templates/app-http.conf.template:ro
+      - ./deploy/dominio/nginx/cert-tls.conf.template:/etc/nginx/templates/cert-tls.conf.template:ro
+      - ./deploy/dominio/nginx/common-auth.conf:/etc/nginx/common-auth.conf:ro
+      - ./deploy/dominio/ca:/etc/nginx/ca:ro
+      - ./deploy/dominio/gateway-entrypoint.sh:/gateway-entrypoint.sh:ro
+      - ./deploy/dominio/letsencrypt:/etc/letsencrypt
+      - ./deploy/dominio/acme:/var/www/acme
+    depends_on:
+      - landing
+    networks:
+      - pista-aberta_internal
+      - proxy
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=proxy
+      # Demo pública en APP_HOST. ROOT/www → servizo landing.
+      - traefik.http.routers.pa-app.rule=Host(`${APP_HOST}`)
+      - traefik.http.routers.pa-app.entrypoints=https
+      - traefik.http.routers.pa-app.tls=true
+      - traefik.http.routers.pa-app.tls.certresolver=letsencrypt
+      - traefik.http.routers.pa-app.service=pa-app
+      - traefik.http.routers.pa-app.priority=10
+      - traefik.http.services.pa-app.loadbalancer.server.port=80
+      - traefik.http.routers.pa-app-http.rule=Host(`${APP_HOST}`)
+      - traefik.http.routers.pa-app-http.entrypoints=http
+      - traefik.http.routers.pa-app-http.middlewares=pa-https
+      - traefik.http.routers.pa-app-http.priority=10
+      - traefik.http.middlewares.pa-https.redirectscheme.scheme=https
+      # cert.* HTTP → nginx (só ACME; o resto 404). PathPrefix+Host fallaba no proxy catchall.
+      - traefik.http.routers.pa-cert-http.rule=Host(`${CERT_HOST}`)
+      - traefik.http.routers.pa-cert-http.entrypoints=http
+      - traefik.http.routers.pa-cert-http.service=pa-app
+      - traefik.http.routers.pa-cert-http.priority=100
+      # cert.*: paso directo TLS (Traefik NON descifra)
+      - traefik.tcp.routers.pa-cert.rule=HostSNI(`${CERT_HOST}`)
+      - traefik.tcp.routers.pa-cert.entrypoints=https
+      - traefik.tcp.routers.pa-cert.tls.passthrough=true
+      - traefik.tcp.routers.pa-cert.service=pa-cert
+      - traefik.tcp.services.pa-cert.loadbalancer.server.port=8443
+
+  # Renovación Let's Encrypt de cert.* (arranque sen --profile).
+  # No servidor: dns-cloudflare (ver docs/OPERACION.md); aquí webroot.
+  certbot:
+    image: certbot/certbot:v2.11.0
+    volumes:
+      - ./deploy/dominio/letsencrypt:/etc/letsencrypt
+      - ./deploy/dominio/acme:/var/www/acme
+    entrypoint: /bin/sh -c "trap exit TERM; while :; do certbot renew --webroot -w /var/www/acme --quiet; sleep 12h & wait $${!}; done"
+    restart: unless-stopped
+
+  # OCSP demo (AIA dos .p12 de proba). Require deploy/demo-ca xerado.
+  # Arranque: docker compose ... --profile demo-ca up -d
+  pa-ocsp-demo:
+    image: alpine:3.20
+    profiles:
+      - demo-ca
+    command: sh -c "apk add --no-cache openssl >/dev/null && openssl ocsp -port 2560 -index /ca/index.txt -CA /ca/demo-ca.pem -rsigner /ca/ocsp.pem -rkey /ca/ocsp.key -nmin 5"
+    volumes:
+      - ./deploy/demo-ca:/ca:ro
+    networks:
+      - pista-aberta_internal
+    restart: unless-stopped
+
+networks:
+  proxy:
+    external: true
+
+volumes:
+  pista_appdata:
+    name: ${DEMO_DATA_VOLUME:-pista-aberta_appdata}

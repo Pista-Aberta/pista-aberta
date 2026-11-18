@@ -1,0 +1,84 @@
+# Pista Aberta — stack local / demo
+# Arranque: docker compose up --build
+# Web :3000 · API :3001 · Mailpit UI :8025 · Postgres interno
+#
+# Sen Docker (dev nesta máquina): npm run dev:api usa PGlite en .data/pglite
+
+name: pista-aberta
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: pista
+      POSTGRES_PASSWORD: pista
+      POSTGRES_DB: pista_aberta
+    volumes:
+      - pista_pgdata:/var/lib/postgresql/data
+    networks:
+      - pista-aberta_internal
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U pista -d pista_aberta"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    ports:
+      # Local: opcional para psql / ferramentas. No VPS quitar ou bind 127.0.0.1
+      - "127.0.0.1:5432:5432"
+
+  mailpit:
+    image: axllent/mailpit:v1.27.10
+    environment:
+      MP_WEBROOT: /correo/
+      MP_HIDE_DELETE_ALL_BUTTON: "true"
+    networks:
+      - pista-aberta_internal
+    ports:
+      - "127.0.0.1:8025:8025"
+      - "127.0.0.1:1025:1025"
+
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    environment:
+      DATABASE_URL: postgres://pista:pista@postgres:5432/pista_aberta
+      FORCE_POSTGRES: "1"
+      SMTP_HOST: mailpit
+      SMTP_PORT: 1025
+      SMTP_FROM: noreply@pistaaberta.local
+      API_HOST: 0.0.0.0
+      API_PORT: 3001
+      TZ: Europe/Madrid
+      APP_BASE_URL: http://localhost:3000
+      API_BASE_URL: http://localhost:3001
+      SESSION_SECRET: compose-dev-change-me
+    depends_on:
+      postgres:
+        condition: service_healthy
+      mailpit:
+        condition: service_started
+    networks:
+      - pista-aberta_internal
+    ports:
+      - "3001:3001"
+
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+    environment:
+      VITE_API_URL: http://localhost:3001
+    depends_on:
+      - api
+    networks:
+      - pista-aberta_internal
+    ports:
+      - "3000:80"
+
+networks:
+  pista-aberta_internal:
+    driver: bridge
+
+volumes:
+  pista_pgdata:

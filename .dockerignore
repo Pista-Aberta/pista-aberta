@@ -1,0 +1,13 @@
+node_modules/
+dist/
+build/
+.data/
+.git/
+.env
+.env.*
+*.log
+deploy/dominio/letsencrypt/
+deploy/dominio/htpasswd
+deploy/dominio/acme/
+deploy/demo-ca/*.key
+deploy/demo-ca/ocsp.key

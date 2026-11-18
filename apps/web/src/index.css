@@ -1,0 +1,335 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+/* v3: sen banda diagonal; clase legado baleira para non romper markup. */
+.pa-hero-flag {
+  display: none;
+}
+
+.pa-hero-v3 {
+  background: var(--pa-hero);
+  border-bottom: 1px solid var(--pa-hero-line);
+  color: var(--pa-marino);
+}
+
+@keyframes pa-map-pulse {
+  0% {
+    r: 5;
+    opacity: 0.9;
+  }
+  100% {
+    r: 20;
+    opacity: 0;
+  }
+}
+.pa-map-pulse {
+  animation: pa-map-pulse 1.8s ease-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .pa-map-pulse {
+    animation: none;
+  }
+}
+
+/* REVISION-43 R7: agochar a barra inferior coa folla de reserva aberta. */
+html.pa-reserve-sheet-open [data-pa-mobile-tab="1"] {
+  display: none !important;
+}
+
+/* Reserva espazo para a barra flotante móbil (PortadaV2M) */
+.pa-citizen-shell {
+  padding-bottom: calc(
+    var(--pa-mobile-tab-inset) + var(--pa-mobile-tab-h) + 16px + env(safe-area-inset-bottom, 0px)
+  );
+}
+@media (min-width: 1024px) {
+  .pa-citizen-shell {
+    padding-bottom: 0;
+  }
+}
+
+html[data-contrast="high"] body {
+  background: #fff !important;
+  color: #000 !important;
+}
+
+html[data-contrast="high"] .pa-interactive {
+  border-width: 2px !important;
+  border-color: #000 !important;
+}
+
+/* X9: franxas e selector segmentado distinguíbeis sen cor. */
+html[data-contrast="high"] [data-slot-state="libre"] {
+  border-width: 2.5px !important;
+  border-style: solid !important;
+  background-image: none !important;
+}
+html[data-contrast="high"] [data-slot-state="ocupada"],
+html[data-contrast="high"] [data-slot-state="pechada"] {
+  border-width: 2.5px !important;
+  border-style: dashed !important;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    #fff,
+    #fff 3px,
+    #e8e8e8 3px,
+    #e8e8e8 6px
+  ) !important;
+}
+html[data-contrast="high"] [data-slot-state="escollida"],
+html[data-contrast="high"] [data-slot-state="tua"] {
+  border-width: 3px !important;
+  border-style: solid !important;
+  outline: 2px solid #000;
+  outline-offset: 1px;
+}
+html[data-contrast="high"] [role="group"][data-pa-segmented] button[aria-pressed="true"] {
+  border: 3px solid #000 !important;
+  box-shadow: none !important;
+}
+html[data-contrast="high"] [data-pa-on-brand] a,
+html[data-contrast="high"] [data-pa-on-brand] a:hover,
+html[data-contrast="high"] [data-pa-on-brand] a[aria-current="page"] {
+  color: #fff !important;
+}
+
+html[data-text="125"] {
+  font-size: 125%;
+}
+html[data-text="150"] {
+  font-size: 150%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Clip horizontal overflow on mobile (DemoProfileBar / tab bar / 100vw toasts). */
+html {
+  overflow-x: clip;
+  max-width: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  max-width: 100%;
+  overflow-x: clip;
+  background: var(--pa-bg);
+  color: var(--pa-ink);
+  font-family: "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", "Segoe UI", sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+#root {
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+h1,
+h2,
+h3,
+.pa-title {
+  font-family: "Bricolage Grotesque Variable", "Bricolage Grotesque", "Atkinson Hyperlegible Next",
+    sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--pa-marino);
+}
+
+/* Dentro de @layer base para que as utilities (text-white / text-on-dark)
+ * gañen á regra global — crítico na barra de cor do concello (REVISION-18 T1). */
+@layer base {
+  a {
+    color: var(--pa-azul-700);
+  }
+  a:hover {
+    color: var(--pa-marino);
+  }
+  /* Enlaces sobre fondo de marca: branco sólido no activo (REVISION-29 Y3:
+   * 0,85 sobre --pa-azul → #D9EBF6, contraste 3,7:1; #fff → 4,5:1). */
+  [data-pa-on-brand] a {
+    color: rgb(255 255 255 / 0.85);
+  }
+  [data-pa-on-brand] a:hover {
+    color: #fff;
+  }
+  [data-pa-on-brand] a[aria-current="page"],
+  [data-pa-on-brand] a.bg-azul,
+  [data-pa-on-brand] a[class*="bg-azul"] {
+    color: #fff;
+  }
+  [data-pa-on-brand] svg {
+    color: inherit;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--pa-azul);
+  outline-offset: 2px;
+}
+
+@layer components {
+  /* C1: ancho 1136 · lectura 720 aliñada á esquerda co mesmo x */
+  .pa-page {
+    @apply w-full px-4 py-6 md:px-8 md:py-7;
+    max-width: var(--pa-content-wide);
+    margin-inline: auto;
+  }
+  /* REVISION-26 G4 + REVISION-33 D8: móbil 16 px (como .pa-page); aliñar columna en md+. */
+  .pa-page-read {
+    @apply px-4 py-6 md:px-8 md:py-7;
+    max-width: var(--pa-content-read);
+    margin-right: auto;
+    margin-left: auto;
+  }
+  @media (min-width: 768px) {
+    .pa-page-read {
+      margin-left: max(2rem, calc((100% - var(--pa-content-wide)) / 2));
+    }
+  }
+  /* C2: resto de vistas 28 móbil / 36 PC (portada usa .pa-h1-hero) */
+  .pa-h1 {
+    @apply font-extrabold leading-tight tracking-[-0.02em];
+    font-size: var(--pa-h1-mobile);
+    color: var(--pa-marino);
+  }
+  @media (min-width: 768px) {
+    .pa-h1 {
+      font-size: var(--pa-h1);
+    }
+  }
+  .pa-h1-hero {
+    @apply font-extrabold leading-tight tracking-[-0.02em];
+    font-size: var(--pa-h1-hero-mobile);
+    color: var(--pa-marino);
+  }
+  @media (min-width: 768px) {
+    .pa-h1-hero {
+      font-size: var(--pa-h1-hero);
+    }
+  }
+  .pa-h2 {
+    @apply text-xl font-extrabold tracking-[-0.02em] md:text-2xl;
+    color: var(--pa-marino);
+  }
+  .pa-card {
+    border-radius: var(--pa-radius-card);
+    @apply border border-line bg-white;
+  }
+  /* C3: principal/secundario 44×12×15/700 */
+  .pa-btn {
+    border-radius: var(--pa-radius-btn);
+    @apply inline-flex items-center justify-center gap-2 px-5 font-bold transition disabled:cursor-not-allowed disabled:opacity-55;
+    min-height: var(--pa-btn-h);
+    font-size: var(--pa-btn-text);
+    font-weight: 700;
+  }
+  .pa-btn-sm {
+    border-radius: var(--pa-r-sm);
+    min-height: var(--pa-btn-h-sm);
+    font-size: 14px;
+    @apply inline-flex items-center justify-center gap-2 px-3 font-bold transition;
+  }
+  .pa-btn-primary {
+    @apply pa-btn text-white hover:opacity-95;
+    background: var(--pa-azul);
+  }
+  .pa-btn-primary:hover {
+    background: var(--pa-azul-700);
+  }
+  .pa-btn-secondary {
+    @apply pa-btn border-[1.5px] border-line bg-white text-ink hover:border-ink;
+  }
+  .pa-btn-danger {
+    @apply pa-btn border-[1.5px] border-danger bg-white text-danger hover:bg-erro-bg;
+  }
+  .pa-chip {
+    border-radius: 9999px;
+    @apply inline-flex min-h-10 items-center gap-1 px-3 text-sm font-bold;
+  }
+  .pa-chip-ok {
+    @apply pa-chip bg-okBg text-ink;
+  }
+  .pa-chip-warn {
+    @apply pa-chip border border-warnBorder bg-warnBg text-warnText;
+  }
+  .pa-chip-off {
+    @apply pa-chip border border-border2 bg-white text-ink;
+  }
+  .pa-chip-ink {
+    @apply pa-chip text-white;
+    background: var(--pa-marino);
+  }
+  .pa-slot-free {
+    border-radius: var(--pa-radius-btn);
+    @apply min-h-[54px] border-2 border-solid font-bold;
+    border-color: var(--pa-libre-bd);
+    background: var(--pa-libre-bg);
+    color: var(--pa-libre);
+  }
+  .pa-slot-occupied {
+    border-radius: var(--pa-radius-btn);
+    @apply min-h-[54px] font-bold line-through;
+    background: var(--pa-ocupada-bg);
+    color: var(--pa-ocupada);
+  }
+  .pa-slot-selected {
+    border-radius: var(--pa-radius-btn);
+    @apply min-h-[54px] font-bold text-white;
+    background: var(--pa-azul);
+  }
+  .pa-slot-closed {
+    border-radius: var(--pa-radius-btn);
+    @apply min-h-[54px] font-bold text-graphite;
+    background: var(--pa-closed);
+  }
+  /* C4: campos 48×16×radio 12, borde --pa-line-2 */
+  .pa-input {
+    border-radius: var(--pa-radius-btn);
+    @apply w-full border-[1.5px] border-inputBorder bg-white px-4 text-base text-ink;
+    min-height: 48px;
+  }
+  .pa-warn-banner {
+    border-radius: var(--pa-radius-card);
+    @apply flex items-start gap-3 border-[2px] border-warnBorder bg-warnBg px-4 py-3 text-warnText;
+  }
+  .pa-ok-banner {
+    border-radius: var(--pa-radius-card);
+    @apply flex items-start gap-3 border border-line bg-okBg px-4 py-3 text-ink;
+  }
+}
+
+/* Conserxaría — folla impresa: todo o día (pasadas abertas) */
+@media print {
+  .pa-staff-checkin .pa-staff-scan,
+  .pa-staff-checkin .print\:hidden {
+    display: none !important;
+  }
+  .pa-staff-checkin {
+    max-width: none;
+    padding: 0;
+  }
+  .pa-staff-checkin .pa-staff-day-group {
+    break-inside: avoid;
+  }
+  /* Contido de <details> pechados (Pasadas) visible ao imprimir */
+  .pa-staff-checkin details.pa-staff-day-group > *:not(summary) {
+    display: block !important;
+  }
+  .pa-staff-checkin details.pa-staff-day-group ul {
+    display: flex !important;
+  }
+}

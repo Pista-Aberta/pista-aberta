@@ -1,0 +1,44 @@
+# CI · Pista Aberta (GitHub Actions)
+name: ci
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: pista
+          POSTGRES_PASSWORD: pista
+          POSTGRES_DB: pista_aberta
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U pista -d pista_aberta"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      DATABASE_URL: postgres://pista:pista@localhost:5432/pista_aberta
+      PA_DEMO: "1"
+      SESSION_SECRET: ci-session-secret-not-for-prod
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - name: Install
+        run: npm ci
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Test API
+        run: npm test -w @pista-aberta/api
+      - name: Build
+        run: npm run build
+      - name: npm audit (prod, high+)
+        run: npm audit --omit=dev --audit-level=high

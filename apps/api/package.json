@@ -1,0 +1,51 @@
+{
+  "name": "@pista-aberta/api",
+  "version": "0.1.0",
+  "license": "EUPL-1.2",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "test:audit-p1": "tsx --test src/store/audit-p1-effective-role.test.ts",
+    "start": "node dist/index.js",
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit",
+    "test:audit-p2-account-privacy": "tsx --test src/store/audit-p2-account-privacy.test.ts",
+    "seed": "tsx src/seed/run.ts",
+    "db:migrate": "tsx src/db/run-migrate.ts",
+    "db:seed": "tsx src/seed/run.ts",
+    "db:import": "tsx src/db/import-cli.ts",
+    "setup": "tsx scripts/setup-muni.ts",
+    "admin": "tsx scripts/create-admin.ts",
+    "test": "npm run typecheck && node scripts/run-tests.mjs",
+    "test:fast": "npm run typecheck && PA_TEST_CONCURRENCY=4 node scripts/run-tests.mjs",
+    "posttest": "tsx --test src/middleware/origin-guard.test.ts",
+    "test:ocsp": "tsx scripts/test-ocsp.ts"
+  },
+  "dependencies": {
+    "@hono/node-server": "1.19.19",
+    "@node-saml/node-saml": "^5.1.0",
+    "@peculiar/webcrypto": "^1.7.1",
+    "@peculiar/x509": "^2.2.0",
+    "@pista-aberta/shared": "*",
+    "@xmldom/xmldom": "^0.9.12",
+    "drizzle-orm": "^0.45.4",
+    "hono": "4.13.18",
+    "nodemailer": "^10.1.7",
+    "postgres": "^3.4.9",
+    "qrcode": "^1.5.4",
+    "reflect-metadata": "^0.2.2",
+    "sharp": "^0.35.5",
+    "xml-crypto": "^6.4.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "^0.5.11",
+    "@types/node": "^22.9.0",
+    "@types/nodemailer": "^8.0.2",
+    "@types/qrcode": "^1.5.6",
+    "drizzle-kit": "^0.31.11",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3"
+  }
+}

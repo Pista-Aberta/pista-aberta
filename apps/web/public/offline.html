@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="gl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#007BC4" />
+    <title>Sen conexión · Pista Aberta</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #1a1a1a;
+        --marino: #002b4a;
+        --graph: #5c6b76;
+        --line: #d7dde2;
+        --paper: #f4f3f0;
+        --surface: #fff;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: system-ui, sans-serif;
+        background: var(--paper);
+        color: var(--ink);
+        padding: 1.25rem;
+      }
+      h1 {
+        margin: 0 0 0.5rem;
+        font-size: 1.5rem;
+        color: var(--marino);
+      }
+      p {
+        margin: 0.35rem 0;
+        color: var(--graph);
+        font-size: 0.95rem;
+      }
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 1rem;
+        padding: 1rem;
+        margin: 1rem 0;
+        text-align: center;
+      }
+      .code {
+        font-family: ui-monospace, monospace;
+        font-size: 1.25rem;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        color: var(--marino);
+      }
+      a {
+        color: #007bc4;
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Sen conexión</h1>
+    <p id="hint">QR das reservas gardadas neste dispositivo.</p>
+    <div id="list"></div>
+    <p><a id="home" href="/">Volver ao inicio</a></p>
+    <script>
+      (function () {
+        var m = location.pathname.match(/^\/c\/([^/]+)/);
+        var slug = m ? m[1] : null;
+        var home = document.getElementById("home");
+        if (slug && home) home.setAttribute("href", "/c/" + slug + "/");
+        var list = document.getElementById("list");
+        var items = [];
+        try {
+          for (var i = 0; i < localStorage.length; i++) {
+            var key = localStorage.key(i);
+            if (!key || key.indexOf("pa_qr_") !== 0) continue;
+            try {
+              var data = JSON.parse(localStorage.getItem(key) || "");
+              if (data && data.shortCode && data.date && data.start) items.push(data);
+            } catch (e) {}
+          }
+        } catch (e) {}
+        items.sort(function (a, b) {
+          return String(b.date).localeCompare(String(a.date));
+        });
+        if (!items.length) {
+          list.innerHTML = "<p>Non hai QR gardados neste dispositivo.</p>";
+          return;
+        }
+        list.innerHTML = items
+          .map(function (b) {
+            return (
+              '<div class="card"><p><strong>' +
+              (b.facilityName || "Reserva") +
+              "</strong></p><p>" +
+              b.date +
+              " · " +
+              b.start +
+              (b.end ? "–" + b.end : "") +
+              '</p><p class="code">' +
+              b.shortCode +
+              "</p></div>"
+            );
+          })
+          .join("");
+      })();
+    </script>
+  </body>
+</html>

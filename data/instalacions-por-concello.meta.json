@@ -1,0 +1,15 @@
+{
+  "_meta": {
+    "source": "OpenStreetMap via Geofabrik galicia-latest.osm.pbf",
+    "extractDate": "2026-10-25",
+    "generatedAt": "2026-10-26T18:05:18Z",
+    "license": "ODbL",
+    "attribution": "© colaboradores de OpenStreetMap, ODbL",
+    "unassignedPoints": 49,
+    "rawFeatures": 6863,
+    "pointsFile": "instalacions-puntos.json",
+    "pointCount": 6814,
+    "label": "instalacións deportivas públicas e privadas (OSM)",
+    "note": "Sen leisure=fitness_centre. Piscinas no censo pero non como filtro na UI. Puntos noutro ficheiro."
+  }
+}

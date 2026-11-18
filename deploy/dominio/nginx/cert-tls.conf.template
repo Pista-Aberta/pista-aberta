@@ -1,0 +1,53 @@
+# mTLS en cert.* — Traefik fai passthrough TCP a :8443 (proxy).
+# Variables: CERT_HOST APP_HOST CERT_GATEWAY_SECRET
+#
+# proxy_pass con variable + resolver Docker (127.0.0.11): resolve `api` en
+# runtime (valid=10s). Sen isto, `upstream { server api:3001; }` garda a IP
+# do arranque e tras recrear o contedor `api` o gateway dá 502.
+# Non usar un resolver público: NXDOMAIN para o hostname Docker `api`.
+
+server {
+  listen 8443 ssl;
+  http2 on;
+  server_name ${CERT_HOST};
+
+  ssl_certificate     /etc/letsencrypt/live/${CERT_HOST}/fullchain.pem;
+  ssl_certificate_key /etc/letsencrypt/live/${CERT_HOST}/privkey.pem;
+  ssl_protocols TLSv1.2 TLSv1.3;
+
+  ssl_client_certificate /etc/nginx/ca/trusted-client-cas.pem;
+  ssl_verify_client optional;
+  ssl_verify_depth 3;
+
+  ssl_ocsp leaf;
+  ssl_ocsp_cache shared:ocsp:10m;
+  resolver 127.0.0.11 valid=10s ipv6=off;
+  resolver_timeout 5s;
+
+  # PEM escapado do cliente pode ser grande (cadea FNMT/DNIe)
+  large_client_header_buffers 4 32k;
+  client_header_buffer_size 16k;
+
+  add_header Strict-Transport-Security "max-age=31536000" always;
+  add_header X-Robots-Tag "noindex, nofollow" always;
+
+  location = /auth/cert/start {
+    if ($ssl_client_verify != SUCCESS) {
+      return 302 https://${APP_HOST}/acceso?erro=cert&motivo=$ssl_client_verify;
+    }
+    set $pa_api http://api:3001;
+    proxy_pass $pa_api/auth/cert/callback$is_args$args;
+    proxy_http_version 1.1;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-PA-Cert-Verify  $ssl_client_verify;
+    proxy_set_header X-PA-Cert         $ssl_client_escaped_cert;
+    proxy_set_header X-PA-Gateway-Auth "${CERT_GATEWAY_SECRET}";
+    proxy_buffer_size 32k;
+    proxy_buffers 8 32k;
+    proxy_busy_buffers_size 64k;
+  }
+
+  location / { return 404; }
+}

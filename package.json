@@ -1,0 +1,41 @@
+{
+  "name": "pista-aberta",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Plataforma libre de xestión e reserva de instalacións deportivas municipais",
+  "license": "EUPL-1.2",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspaces --if-present",
+    "dev:api": "npm run dev -w @pista-aberta/api",
+    "dev:web": "npm run dev -w @pista-aberta/web",
+    "build": "npm run build --workspaces --if-present",
+    "censo-osm": "npx tsx scripts/censo-osm.ts",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "npm test -w @pista-aberta/api && npm test -w @pista-aberta/web",
+    "test:web": "npm test -w @pista-aberta/web",
+    "demo-ca": "bash scripts/demo-ca.sh",
+    "seed": "npm run seed -w @pista-aberta/api",
+    "sbom": "node scripts/sbom-safe.mjs",
+    "sbom:force": "SBOM_FORCE=1 node scripts/sbom-safe.mjs",
+    "test:cert-e2e": "node scripts/e2e-cert-login.mjs",
+    "db:import": "npm run db:import -w @pista-aberta/api --",
+    "setup": "npm run setup -w @pista-aberta/api --",
+    "admin": "npm run admin -w @pista-aberta/api --"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
+    "@turf/boolean-point-in-polygon": "^7.4.0",
+    "@turf/distance": "^7.4.0",
+    "@turf/helpers": "^7.4.0",
+    "playwright": "^1.48.2",
+    "sharp": "^0.35.5",
+    "tsx": "^4.23.15"
+  }
+}

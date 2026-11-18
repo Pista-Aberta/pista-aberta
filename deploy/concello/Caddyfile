@@ -1,0 +1,93 @@
+# Gateway HTTPS dun concello (Let's Encrypt automático vía Caddy).
+# DOMAIN e CERT_GATEWAY_SECRET vén do environment do servizo caddy (.env.install).
+
+{
+	email {$ACME_EMAIL:admin@{$DOMAIN}}
+}
+
+{$DOMAIN} {
+	encode gzip
+
+	header {
+		X-Content-Type-Options nosniff
+		X-Frame-Options DENY
+		Referrer-Policy strict-origin-when-cross-origin
+		Permissions-Policy "camera=(self), microphone=(), geolocation=()"
+		Strict-Transport-Security "max-age=31536000"
+		# Alineado con deploy/dominio/nginx/app-http.conf.template (SPA + estilos inline)
+		Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'self'; media-src 'self' blob:; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+	}
+
+	# O callback mTLS só existe en cert.{$DOMAIN}; bloquear no dominio principal.
+	handle /auth/cert/callback* {
+		respond 404
+	}
+
+	handle /health {
+		reverse_proxy api:3001 {
+			header_up X-Real-IP {remote_host}
+			header_up -X-PA-Cert-Verify
+			header_up -X-PA-Cert
+			header_up -X-PA-Cert-*
+		}
+	}
+
+	handle /api/* {
+		reverse_proxy api:3001 {
+			header_up X-Real-IP {remote_host}
+			header_up -X-PA-Cert-Verify
+			header_up -X-PA-Cert
+			header_up -X-PA-Cert-*
+		}
+	}
+
+	handle /auth/* {
+		reverse_proxy api:3001 {
+			header_up X-Real-IP {remote_host}
+			header_up -X-PA-Cert-Verify
+			header_up -X-PA-Cert
+			header_up -X-PA-Cert-*
+		}
+	}
+
+	handle {
+		reverse_proxy web:80
+	}
+}
+
+# mTLS — certificado dixital / DNIe.
+# Caddy verifica a cadea; a revogación OCSP faina a API (REVISION-26 G3).
+# Alternativa nginx: deploy/dominio/nginx/cert-tls.conf.template (ssl_ocsp on).
+cert.{$DOMAIN} {
+	encode gzip
+
+	tls {
+		client_auth {
+			mode require_and_verify
+			trusted_ca_cert_file /etc/caddy/trusted-client-cas.official.pem
+		}
+	}
+
+	header {
+		Strict-Transport-Security "max-age=31536000"
+		X-Robots-Tag "noindex, nofollow"
+	}
+
+	handle /auth/cert/start {
+		uri replace /auth/cert/start /auth/cert/callback
+		reverse_proxy api:3001 {
+			transport http {
+				versions 1.1
+			}
+			header_up Host {host}
+			header_up X-Real-IP {remote_host}
+			header_up X-PA-Cert-Verify SUCCESS
+			header_up X-PA-Cert {http.request.tls.client.certificate_der_base64}
+			header_up X-PA-Gateway-Auth {$CERT_GATEWAY_SECRET}
+		}
+	}
+
+	handle {
+		respond 404
+	}
+}

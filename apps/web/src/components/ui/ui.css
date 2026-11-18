@@ -1,0 +1,126 @@
+/* Movemento e foco dos compoñentes ui/ (DESENO-V2 §2) */
+
+.pa-ui-interactive {
+  transition:
+    background-color 150ms ease-out,
+    color 150ms ease-out,
+    border-color 150ms ease-out,
+    box-shadow 200ms ease-out,
+    transform 150ms ease-out;
+}
+.pa-ui-interactive:active:not(:disabled) {
+  transform: scale(0.98);
+}
+.pa-ui-interactive:focus-visible {
+  outline: 3px solid var(--pa-azul);
+  outline-offset: 2px;
+}
+.pa-ui-interactive-on-dark:focus-visible {
+  outline-color: var(--pa-on-dark);
+}
+
+.pa-ui-lift {
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+.pa-ui-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--pa-sombra);
+}
+
+@keyframes pa-ui-skeleton {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+.pa-ui-skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--pa-seg-track) 0%,
+    var(--pa-azul-25) 50%,
+    var(--pa-seg-track) 100%
+  );
+  background-size: 200% 100%;
+  animation: pa-ui-skeleton 1.2s ease-out infinite;
+}
+
+.pa-ui-empty-court {
+  border-radius: var(--pa-r);
+  overflow: hidden;
+}
+
+/* Móbil: sobre a barra de pestanas flotante */
+.pa-ui-sheet-mobile {
+  bottom: calc(var(--pa-mobile-tab-inset) + var(--pa-mobile-tab-h) + 12px);
+  padding-bottom: max(22px, env(safe-area-inset-bottom));
+}
+
+/* REVISION-44 S3: folla de reserva pegada ao bordo inferior (barra agochoada). */
+html.pa-reserve-sheet-open .pa-ui-sheet-mobile {
+  bottom: 0;
+  padding-bottom: max(22px, env(safe-area-inset-bottom, 0px));
+}
+
+.pa-ui-toast-mobile {
+  bottom: calc(var(--pa-mobile-tab-inset) + var(--pa-mobile-tab-h) + 24px);
+}
+
+/* Confirmación de reserva — check animado (DESENO-V2 §3.3) */
+@keyframes pa-ui-check-pop {
+  0% {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes pa-ui-check-draw {
+  from {
+    stroke-dashoffset: 28;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.pa-ui-check {
+  animation: pa-ui-check-pop 220ms ease-out both;
+}
+
+.pa-ui-check__mark {
+  stroke-dasharray: 28;
+  stroke-dashoffset: 28;
+  animation: pa-ui-check-draw 240ms ease-out 100ms both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pa-ui-interactive,
+  .pa-ui-lift,
+  .pa-ui-lift:hover {
+    transition: none;
+    transform: none;
+  }
+  .pa-ui-interactive:active:not(:disabled) {
+    transform: none;
+  }
+  .pa-ui-skeleton {
+    animation: none;
+  }
+  .pa-ui-check {
+    animation: none;
+  }
+  .pa-ui-check__mark {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "nif": "00000001R",
+    "nombre": "Alba",
+    "apellidos": "Vila Proba",
+    "email": "vecina.proba@demo.pistaaberta.org",
+    "role": "vecino",
+    "municipalitySlug": "proba"
+  },
+  {
+    "nif": "00000002W",
+    "nombre": "Carlos",
+    "apellidos": "Souto Proba",
+    "email": "admin.proba@demo.pistaaberta.org",
+    "role": "admin",
+    "municipalitySlug": "proba"
+  }
+]

@@ -1,0 +1,1880 @@
+[
+{
+"ine": "32078",
+"name": "Sarreaus",
+"slug": "sarreaus",
+"facilityCount": 7
+},
+{
+"ine": "32075",
+"name": "San Cibrao das Viñas",
+"slug": "san-cibrao-das-vinas",
+"facilityCount": 19
+},
+{
+"ine": "32024",
+"name": "Celanova",
+"slug": "celanova",
+"facilityCount": 9
+},
+{
+"ine": "32019",
+"name": "O Carballiño",
+"slug": "o-carballino",
+"facilityCount": 16
+},
+{
+"ine": "32082",
+"name": "Trasmiras",
+"slug": "trasmiras",
+"facilityCount": 5
+},
+{
+"ine": "32018",
+"name": "Carballeda de Avia",
+"slug": "carballeda-de-avia",
+"facilityCount": 2
+},
+{
+"ine": "15021",
+"name": "Carral",
+"slug": "carral",
+"facilityCount": 27
+},
+{
+"ine": "15002",
+"name": "Ames",
+"slug": "ames",
+"facilityCount": 57
+},
+{
+"ine": "15003",
+"name": "Aranga",
+"slug": "aranga",
+"facilityCount": 8
+},
+{
+"ine": "15004",
+"name": "Ares",
+"slug": "ares",
+"facilityCount": 15
+},
+{
+"ine": "15005",
+"name": "Arteixo",
+"slug": "arteixo",
+"facilityCount": 48
+},
+{
+"ine": "15006",
+"name": "Arzúa",
+"slug": "arzua",
+"facilityCount": 15
+},
+{
+"ine": "15007",
+"name": "A Baña",
+"slug": "a-bana",
+"facilityCount": 14
+},
+{
+"ine": "15008",
+"name": "Bergondo",
+"slug": "bergondo",
+"facilityCount": 52
+},
+{
+"ine": "15009",
+"name": "Betanzos",
+"slug": "betanzos",
+"facilityCount": 26
+},
+{
+"ine": "15010",
+"name": "Boimorto",
+"slug": "boimorto",
+"facilityCount": 8
+},
+{
+"ine": "15011",
+"name": "Boiro",
+"slug": "boiro",
+"facilityCount": 39
+},
+{
+"ine": "15012",
+"name": "Boqueixón",
+"slug": "boqueixon",
+"facilityCount": 11
+},
+{
+"ine": "15013",
+"name": "Brión",
+"slug": "brion",
+"facilityCount": 37
+},
+{
+"ine": "15014",
+"name": "Cabana de Bergantiños",
+"slug": "cabana-de-bergantinos",
+"facilityCount": 10
+},
+{
+"ine": "15015",
+"name": "Cabanas",
+"slug": "cabanas",
+"facilityCount": 13
+},
+{
+"ine": "15016",
+"name": "Camariñas",
+"slug": "camarinas",
+"facilityCount": 12
+},
+{
+"ine": "15017",
+"name": "Cambre",
+"slug": "cambre",
+"facilityCount": 52
+},
+{
+"ine": "15083",
+"name": "Toques",
+"slug": "toques",
+"facilityCount": 4
+},
+{
+"ine": "15084",
+"name": "Tordoia",
+"slug": "tordoia",
+"facilityCount": 8
+},
+{
+"ine": "15085",
+"name": "Touro",
+"slug": "touro",
+"facilityCount": 12
+},
+{
+"ine": "15086",
+"name": "Trazo",
+"slug": "trazo",
+"facilityCount": 15
+},
+{
+"ine": "15087",
+"name": "Valdoviño",
+"slug": "valdovino",
+"facilityCount": 23
+},
+{
+"ine": "15018",
+"name": "A Capela",
+"slug": "a-capela",
+"facilityCount": 6
+},
+{
+"ine": "15019",
+"name": "Carballo",
+"slug": "carballo",
+"facilityCount": 39
+},
+{
+"ine": "15020",
+"name": "Carnota",
+"slug": "carnota",
+"facilityCount": 14
+},
+{
+"ine": "15021",
+"name": "Carral",
+"slug": "carral",
+"facilityCount": 27
+},
+{
+"ine": "15022",
+"name": "Cedeira",
+"slug": "cedeira",
+"facilityCount": 10
+},
+{
+"ine": "15023",
+"name": "Cee",
+"slug": "cee",
+"facilityCount": 17
+},
+{
+"ine": "15048",
+"name": "Miño",
+"slug": "mino",
+"facilityCount": 26
+},
+{
+"ine": "15092",
+"name": "Vimianzo",
+"slug": "vimianzo",
+"facilityCount": 17
+},
+{
+"ine": "15093",
+"name": "Zas",
+"slug": "zas",
+"facilityCount": 16
+},
+{
+"ine": "15901",
+"name": "Cariño",
+"slug": "carino",
+"facilityCount": 10
+},
+{
+"ine": "15902",
+"name": "Oza-Cesuras",
+"slug": "oza-cesuras",
+"facilityCount": 16
+},
+{
+"ine": "27001",
+"name": "Abadín",
+"slug": "abadin",
+"facilityCount": 6
+},
+{
+"ine": "32084",
+"name": "Verea",
+"slug": "verea",
+"facilityCount": 2
+},
+{
+"ine": "15024",
+"name": "Cerceda",
+"slug": "cerceda",
+"facilityCount": 17
+},
+{
+"ine": "15025",
+"name": "Cerdido",
+"slug": "cerdido",
+"facilityCount": 3
+},
+{
+"ine": "15027",
+"name": "Coirós",
+"slug": "coiros",
+"facilityCount": 6
+},
+{
+"ine": "15037",
+"name": "Fisterra",
+"slug": "fisterra",
+"facilityCount": 7
+},
+{
+"ine": "15029",
+"name": "Coristanco",
+"slug": "coristanco",
+"facilityCount": 11
+},
+{
+"ine": "15030",
+"name": "A Coruña",
+"slug": "a-coruna",
+"facilityCount": 184
+},
+{
+"ine": "15031",
+"name": "Culleredo",
+"slug": "culleredo",
+"facilityCount": 75
+},
+{
+"ine": "15032",
+"name": "Curtis",
+"slug": "curtis",
+"facilityCount": 20
+},
+{
+"ine": "15033",
+"name": "Dodro",
+"slug": "dodro",
+"facilityCount": 5
+},
+{
+"ine": "15034",
+"name": "Dumbría",
+"slug": "dumbria",
+"facilityCount": 10
+},
+{
+"ine": "15035",
+"name": "Fene",
+"slug": "fene",
+"facilityCount": 25
+},
+{
+"ine": "15036",
+"name": "Ferrol",
+"slug": "ferrol",
+"facilityCount": 105
+},
+{
+"ine": "15037",
+"name": "Fisterra",
+"slug": "fisterra",
+"facilityCount": 7
+},
+{
+"ine": "15038",
+"name": "Frades",
+"slug": "frades",
+"facilityCount": 10
+},
+{
+"ine": "15039",
+"name": "Irixoa",
+"slug": "irixoa",
+"facilityCount": 2
+},
+{
+"ine": "15040",
+"name": "Laxe",
+"slug": "laxe",
+"facilityCount": 8
+},
+{
+"ine": "15041",
+"name": "A Laracha",
+"slug": "a-laracha",
+"facilityCount": 25
+},
+{
+"ine": "15057",
+"name": "Noia",
+"slug": "noia",
+"facilityCount": 24
+},
+{
+"ine": "15043",
+"name": "Malpica de Bergantiños",
+"slug": "malpica-de-bergantinos",
+"facilityCount": 19
+},
+{
+"ine": "15044",
+"name": "Mañón",
+"slug": "manon",
+"facilityCount": 10
+},
+{
+"ine": "15045",
+"name": "Mazaricos",
+"slug": "mazaricos",
+"facilityCount": 12
+},
+{
+"ine": "15046",
+"name": "Melide",
+"slug": "melide",
+"facilityCount": 15
+},
+{
+"ine": "15047",
+"name": "Mesía",
+"slug": "mesia",
+"facilityCount": 15
+},
+{
+"ine": "15048",
+"name": "Miño",
+"slug": "mino",
+"facilityCount": 26
+},
+{
+"ine": "15049",
+"name": "Moeche",
+"slug": "moeche",
+"facilityCount": 5
+},
+{
+"ine": "15050",
+"name": "Monfero",
+"slug": "monfero",
+"facilityCount": 10
+},
+{
+"ine": "15004",
+"name": "Ares",
+"slug": "ares",
+"facilityCount": 15
+},
+{
+"ine": "15052",
+"name": "Muxía",
+"slug": "muxia",
+"facilityCount": 15
+},
+{
+"ine": "15053",
+"name": "Muros",
+"slug": "muros",
+"facilityCount": 21
+},
+{
+"ine": "15054",
+"name": "Narón",
+"slug": "naron",
+"facilityCount": 61
+},
+{
+"ine": "15055",
+"name": "Neda",
+"slug": "neda",
+"facilityCount": 13
+},
+{
+"ine": "15056",
+"name": "Negreira",
+"slug": "negreira",
+"facilityCount": 19
+},
+{
+"ine": "15062",
+"name": "Outes",
+"slug": "outes",
+"facilityCount": 21
+},
+{
+"ine": "15058",
+"name": "Oleiros",
+"slug": "oleiros",
+"facilityCount": 157
+},
+{
+"ine": "15059",
+"name": "Ordes",
+"slug": "ordes",
+"facilityCount": 38
+},
+{
+"ine": "15060",
+"name": "Oroso",
+"slug": "oroso",
+"facilityCount": 23
+},
+{
+"ine": "15061",
+"name": "Ortigueira",
+"slug": "ortigueira",
+"facilityCount": 24
+},
+{
+"ine": "15062",
+"name": "Outes",
+"slug": "outes",
+"facilityCount": 21
+},
+{
+"ine": "15064",
+"name": "Paderne",
+"slug": "paderne",
+"facilityCount": 10
+},
+{
+"ine": "15065",
+"name": "Padrón",
+"slug": "padron",
+"facilityCount": 22
+},
+{
+"ine": "15066",
+"name": "O Pino",
+"slug": "o-pino",
+"facilityCount": 16
+},
+{
+"ine": "15067",
+"name": "A Pobra do Caramiñal",
+"slug": "a-pobra-do-caraminal",
+"facilityCount": 19
+},
+{
+"ine": "15068",
+"name": "Ponteceso",
+"slug": "ponteceso",
+"facilityCount": 16
+},
+{
+"ine": "15069",
+"name": "Pontedeume",
+"slug": "pontedeume",
+"facilityCount": 19
+},
+{
+"ine": "15070",
+"name": "As Pontes de García Rodríguez",
+"slug": "as-pontes-de-garcia-rodriguez",
+"facilityCount": 31
+},
+{
+"ine": "15071",
+"name": "Porto do Son",
+"slug": "porto-do-son",
+"facilityCount": 33
+},
+{
+"ine": "15072",
+"name": "Rianxo",
+"slug": "rianxo",
+"facilityCount": 22
+},
+{
+"ine": "15073",
+"name": "Ribeira",
+"slug": "ribeira",
+"facilityCount": 33
+},
+{
+"ine": "15074",
+"name": "Rois",
+"slug": "rois",
+"facilityCount": 17
+},
+{
+"ine": "15058",
+"name": "Oleiros",
+"slug": "oleiros",
+"facilityCount": 157
+},
+{
+"ine": "15076",
+"name": "San Sadurniño",
+"slug": "san-sadurnino",
+"facilityCount": 9
+},
+{
+"ine": "15077",
+"name": "Santa Comba",
+"slug": "santa-comba",
+"facilityCount": 29
+},
+{
+"ine": "15078",
+"name": "Santiago de Compostela",
+"slug": "santiago-de-compostela",
+"facilityCount": 184
+},
+{
+"ine": "15079",
+"name": "Santiso",
+"slug": "santiso",
+"facilityCount": 9
+},
+{
+"ine": "15080",
+"name": "Sobrado",
+"slug": "sobrado",
+"facilityCount": 8
+},
+{
+"ine": "15081",
+"name": "As Somozas",
+"slug": "as-somozas",
+"facilityCount": 8
+},
+{
+"ine": "15082",
+"name": "Teo",
+"slug": "teo",
+"facilityCount": 51
+},
+{
+"ine": "15088",
+"name": "Val do Dubra",
+"slug": "val-do-dubra",
+"facilityCount": 12
+},
+{
+"ine": "15089",
+"name": "Vedra",
+"slug": "vedra",
+"facilityCount": 19
+},
+{
+"ine": "15090",
+"name": "Vilasantar",
+"slug": "vilasantar",
+"facilityCount": 6
+},
+{
+"ine": "27002",
+"name": "Alfoz",
+"slug": "alfoz",
+"facilityCount": 8
+},
+{
+"ine": "32046",
+"name": "Melón",
+"slug": "melon",
+"facilityCount": 3
+},
+{
+"ine": "27003",
+"name": "Antas de Ulla",
+"slug": "antas-de-ulla",
+"facilityCount": 6
+},
+{
+"ine": "27004",
+"name": "Baleira",
+"slug": "baleira",
+"facilityCount": 1
+},
+{
+"ine": "27005",
+"name": "Barreiros",
+"slug": "barreiros",
+"facilityCount": 20
+},
+{
+"ine": "27008",
+"name": "Bóveda",
+"slug": "boveda",
+"facilityCount": 12
+},
+{
+"ine": "27009",
+"name": "Carballedo",
+"slug": "carballedo",
+"facilityCount": 3
+},
+{
+"ine": "27006",
+"name": "Becerreá",
+"slug": "becerrea",
+"facilityCount": 8
+},
+{
+"ine": "27010",
+"name": "Castro de Rei",
+"slug": "castro-de-rei",
+"facilityCount": 14
+},
+{
+"ine": "27020",
+"name": "Friol",
+"slug": "friol",
+"facilityCount": 8
+},
+{
+"ine": "27007",
+"name": "Begonte",
+"slug": "begonte",
+"facilityCount": 23
+},
+{
+"ine": "27015",
+"name": "Cospeito",
+"slug": "cospeito",
+"facilityCount": 13
+},
+{
+"ine": "27016",
+"name": "Chantada",
+"slug": "chantada",
+"facilityCount": 14
+},
+{
+"ine": "27017",
+"name": "Folgoso do Courel",
+"slug": "folgoso-do-courel",
+"facilityCount": 1
+},
+{
+"ine": "27018",
+"name": "A Fonsagrada",
+"slug": "a-fonsagrada",
+"facilityCount": 6
+},
+{
+"ine": "27019",
+"name": "Foz",
+"slug": "foz",
+"facilityCount": 29
+},
+{
+"ine": "27021",
+"name": "Xermade",
+"slug": "xermade",
+"facilityCount": 11
+},
+{
+"ine": "27011",
+"name": "Castroverde",
+"slug": "castroverde",
+"facilityCount": 6
+},
+{
+"ine": "27062",
+"name": "Triacastela",
+"slug": "triacastela",
+"facilityCount": 1
+},
+{
+"ine": "27012",
+"name": "Cervantes",
+"slug": "cervantes",
+"facilityCount": 3
+},
+{
+"ine": "27013",
+"name": "Cervo",
+"slug": "cervo",
+"facilityCount": 16
+},
+{
+"ine": "27014",
+"name": "O Corgo",
+"slug": "o-corgo",
+"facilityCount": 13
+},
+{
+"ine": "27022",
+"name": "Guitiriz",
+"slug": "guitiriz",
+"facilityCount": 16
+},
+{
+"ine": "27023",
+"name": "Guntín",
+"slug": "guntin",
+"facilityCount": 5
+},
+{
+"ine": "27024",
+"name": "O Incio",
+"slug": "o-incio",
+"facilityCount": 6
+},
+{
+"ine": "27025",
+"name": "Xove",
+"slug": "xove",
+"facilityCount": 9
+},
+{
+"ine": "27026",
+"name": "Láncara",
+"slug": "lancara",
+"facilityCount": 5
+},
+{
+"ine": "27901",
+"name": "Baralla",
+"slug": "baralla",
+"facilityCount": 7
+},
+{
+"ine": "27902",
+"name": "Burela",
+"slug": "burela",
+"facilityCount": 15
+},
+{
+"ine": "27027",
+"name": "Lourenzá",
+"slug": "lourenza",
+"facilityCount": 9
+},
+{
+"ine": "27028",
+"name": "Lugo",
+"slug": "lugo",
+"facilityCount": 165
+},
+{
+"ine": "27029",
+"name": "Meira",
+"slug": "meira",
+"facilityCount": 8
+},
+{
+"ine": "27030",
+"name": "Mondoñedo",
+"slug": "mondonedo",
+"facilityCount": 9
+},
+{
+"ine": "27031",
+"name": "Monforte de Lemos",
+"slug": "monforte-de-lemos",
+"facilityCount": 38
+},
+{
+"ine": "27032",
+"name": "Monterroso",
+"slug": "monterroso",
+"facilityCount": 10
+},
+{
+"ine": "27033",
+"name": "Muras",
+"slug": "muras",
+"facilityCount": 2
+},
+{
+"ine": "27034",
+"name": "Navia de Suarna",
+"slug": "navia-de-suarna",
+"facilityCount": 2
+},
+{
+"ine": "27035",
+"name": "Negueira de Muñiz",
+"slug": "negueira-de-muniz",
+"facilityCount": 1
+},
+{
+"ine": "32079",
+"name": "Taboadela",
+"slug": "taboadela",
+"facilityCount": 7
+},
+{
+"ine": "27037",
+"name": "As Nogais",
+"slug": "as-nogais",
+"facilityCount": 3
+},
+{
+"ine": "27038",
+"name": "Ourol",
+"slug": "ourol",
+"facilityCount": 4
+},
+{
+"ine": "32027",
+"name": "Cortegada",
+"slug": "cortegada",
+"facilityCount": 4
+},
+{
+"ine": "27056",
+"name": "Rábade",
+"slug": "rabade",
+"facilityCount": 6
+},
+{
+"ine": "32036",
+"name": "Xunqueira de Ambía",
+"slug": "xunqueira-de-ambia",
+"facilityCount": 5
+},
+{
+"ine": "27040",
+"name": "Palas de Rei",
+"slug": "palas-de-rei",
+"facilityCount": 7
+},
+{
+"ine": "27041",
+"name": "Pantón",
+"slug": "panton",
+"facilityCount": 7
+},
+{
+"ine": "27042",
+"name": "Paradela",
+"slug": "paradela",
+"facilityCount": 3
+},
+{
+"ine": "32037",
+"name": "Xunqueira de Espadanedo",
+"slug": "xunqueira-de-espadanedo",
+"facilityCount": 2
+},
+{
+"ine": "27043",
+"name": "O Páramo",
+"slug": "o-paramo",
+"facilityCount": 3
+},
+{
+"ine": "27044",
+"name": "A Pastoriza",
+"slug": "a-pastoriza",
+"facilityCount": 14
+},
+{
+"ine": "32038",
+"name": "Larouco",
+"slug": "larouco",
+"facilityCount": 5
+},
+{
+"ine": "27045",
+"name": "Pedrafita do Cebreiro",
+"slug": "pedrafita-do-cebreiro",
+"facilityCount": 3
+},
+{
+"ine": "32039",
+"name": "Laza",
+"slug": "laza",
+"facilityCount": 3
+},
+{
+"ine": "27046",
+"name": "Pol",
+"slug": "pol",
+"facilityCount": 7
+},
+{
+"ine": "32012",
+"name": "Os Blancos",
+"slug": "os-blancos",
+"facilityCount": 2
+},
+{
+"ine": "27047",
+"name": "A Pobra do Brollón",
+"slug": "a-pobra-do-brollon",
+"facilityCount": 7
+},
+{
+"ine": "27048",
+"name": "A Pontenova",
+"slug": "a-pontenova",
+"facilityCount": 7
+},
+{
+"ine": "27049",
+"name": "Portomarín",
+"slug": "portomarin",
+"facilityCount": 6
+},
+{
+"ine": "27050",
+"name": "Quiroga",
+"slug": "quiroga",
+"facilityCount": 8
+},
+{
+"ine": "27051",
+"name": "Ribadeo",
+"slug": "ribadeo",
+"facilityCount": 30
+},
+{
+"ine": "27052",
+"name": "Ribas de Sil",
+"slug": "ribas-de-sil",
+"facilityCount": 3
+},
+{
+"ine": "32081",
+"name": "Toén",
+"slug": "toen",
+"facilityCount": 12
+},
+{
+"ine": "27053",
+"name": "Ribeira de Piquín",
+"slug": "ribeira-de-piquin",
+"facilityCount": 1
+},
+{
+"ine": "27054",
+"name": "Riotorto",
+"slug": "riotorto",
+"facilityCount": 4
+},
+{
+"ine": "27055",
+"name": "Samos",
+"slug": "samos",
+"facilityCount": 2
+},
+{
+"ine": "27056",
+"name": "Rábade",
+"slug": "rabade",
+"facilityCount": 6
+},
+{
+"ine": "27057",
+"name": "Sarria",
+"slug": "sarria",
+"facilityCount": 24
+},
+{
+"ine": "27058",
+"name": "O Saviñao",
+"slug": "o-savinao",
+"facilityCount": 15
+},
+{
+"ine": "32062",
+"name": "Porqueira",
+"slug": "porqueira",
+"facilityCount": 2
+},
+{
+"ine": "27059",
+"name": "Sober",
+"slug": "sober",
+"facilityCount": 8
+},
+{
+"ine": "27060",
+"name": "Taboada",
+"slug": "taboada",
+"facilityCount": 7
+},
+{
+"ine": "27061",
+"name": "Trabada",
+"slug": "trabada",
+"facilityCount": 5
+},
+{
+"ine": "27063",
+"name": "O Valadouro",
+"slug": "o-valadouro",
+"facilityCount": 8
+},
+{
+"ine": "27064",
+"name": "O Vicedo",
+"slug": "o-vicedo",
+"facilityCount": 3
+},
+{
+"ine": "27065",
+"name": "Vilalba",
+"slug": "vilalba",
+"facilityCount": 26
+},
+{
+"ine": "27066",
+"name": "Viveiro",
+"slug": "viveiro",
+"facilityCount": 35
+},
+{
+"ine": "32045",
+"name": "Maside",
+"slug": "maside",
+"facilityCount": 7
+},
+{
+"ine": "32069",
+"name": "Ribadavia",
+"slug": "ribadavia",
+"facilityCount": 12
+},
+{
+"ine": "32004",
+"name": "Avión",
+"slug": "avion",
+"facilityCount": 8
+},
+{
+"ine": "32006",
+"name": "Bande",
+"slug": "bande",
+"facilityCount": 2
+},
+{
+"ine": "32055",
+"name": "Paderne de Allariz",
+"slug": "paderne-de-allariz",
+"facilityCount": 4
+},
+{
+"ine": "32009",
+"name": "O Barco de Valdeorras",
+"slug": "o-barco-de-valdeorras",
+"facilityCount": 33
+},
+{
+"ine": "32040",
+"name": "Leiro",
+"slug": "leiro",
+"facilityCount": 3
+},
+{
+"ine": "32011",
+"name": "Beariz",
+"slug": "beariz",
+"facilityCount": 6
+},
+{
+"ine": "32013",
+"name": "Boborás",
+"slug": "boboras",
+"facilityCount": 5
+},
+{
+"ine": "32015",
+"name": "O Bolo",
+"slug": "o-bolo",
+"facilityCount": 2
+},
+{
+"ine": "32016",
+"name": "Calvos de Randín",
+"slug": "calvos-de-randin",
+"facilityCount": 4
+},
+{
+"ine": "32010",
+"name": "Beade",
+"slug": "beade",
+"facilityCount": 1
+},
+{
+"ine": "32017",
+"name": "Carballeda de Valdeorras",
+"slug": "carballeda-de-valdeorras",
+"facilityCount": 5
+},
+{
+"ine": "32019",
+"name": "O Carballiño",
+"slug": "o-carballino",
+"facilityCount": 16
+},
+{
+"ine": "32022",
+"name": "Castrelo de Miño",
+"slug": "castrelo-de-mino",
+"facilityCount": 4
+},
+{
+"ine": "32021",
+"name": "Castrelo do Val",
+"slug": "castrelo-do-val",
+"facilityCount": 8
+},
+{
+"ine": "32023",
+"name": "Castro Caldelas",
+"slug": "castro-caldelas",
+"facilityCount": 3
+},
+{
+"ine": "32087",
+"name": "Vilamarín",
+"slug": "vilamarin",
+"facilityCount": 6
+},
+{
+"ine": "32068",
+"name": "Ramirás",
+"slug": "ramiras",
+"facilityCount": 4
+},
+{
+"ine": "32074",
+"name": "San Amaro",
+"slug": "san-amaro",
+"facilityCount": 2
+},
+{
+"ine": "32027",
+"name": "Cortegada",
+"slug": "cortegada",
+"facilityCount": 4
+},
+{
+"ine": "32082",
+"name": "Trasmiras",
+"slug": "trasmiras",
+"facilityCount": 5
+},
+{
+"ine": "32029",
+"name": "Chandrexa de Queixa",
+"slug": "chandrexa-de-queixa",
+"facilityCount": 2
+},
+{
+"ine": "32030",
+"name": "Entrimo",
+"slug": "entrimo",
+"facilityCount": 7
+},
+{
+"ine": "32058",
+"name": "O Pereiro de Aguiar",
+"slug": "o-pereiro-de-aguiar",
+"facilityCount": 21
+},
+{
+"ine": "32032",
+"name": "Xinzo de Limia",
+"slug": "xinzo-de-limia",
+"facilityCount": 12
+},
+{
+"ine": "32034",
+"name": "A Gudiña",
+"slug": "a-gudina",
+"facilityCount": 7
+},
+{
+"ine": "32035",
+"name": "O Irixo",
+"slug": "o-irixo",
+"facilityCount": 2
+},
+{
+"ine": "32040",
+"name": "Leiro",
+"slug": "leiro",
+"facilityCount": 3
+},
+{
+"ine": "32041",
+"name": "Lobeira",
+"slug": "lobeira",
+"facilityCount": 2
+},
+{
+"ine": "32030",
+"name": "Entrimo",
+"slug": "entrimo",
+"facilityCount": 7
+},
+{
+"ine": "32043",
+"name": "Maceda",
+"slug": "maceda",
+"facilityCount": 10
+},
+{
+"ine": "32044",
+"name": "Manzaneda",
+"slug": "manzaneda",
+"facilityCount": 3
+},
+{
+"ine": "32047",
+"name": "A Merca",
+"slug": "a-merca",
+"facilityCount": 9
+},
+{
+"ine": "32048",
+"name": "A Mezquita",
+"slug": "a-mezquita",
+"facilityCount": 2
+},
+{
+"ine": "32049",
+"name": "Montederramo",
+"slug": "montederramo",
+"facilityCount": 0
+},
+{
+"ine": "32028",
+"name": "Cualedro",
+"slug": "cualedro",
+"facilityCount": 8
+},
+{
+"ine": "32041",
+"name": "Lobeira",
+"slug": "lobeira",
+"facilityCount": 2
+},
+{
+"ine": "32052",
+"name": "Nogueira de Ramuín",
+"slug": "nogueira-de-ramuin",
+"facilityCount": 11
+},
+{
+"ine": "15033",
+"name": "Dodro",
+"slug": "dodro",
+"facilityCount": 5
+},
+{
+"ine": "32053",
+"name": "Oímbra",
+"slug": "oimbra",
+"facilityCount": 13
+},
+{
+"ine": "36008",
+"name": "Cangas",
+"slug": "cangas",
+"facilityCount": 35
+},
+{
+"ine": "36026",
+"name": "Marín",
+"slug": "marin",
+"facilityCount": 30
+},
+{
+"ine": "36059",
+"name": "Vila de Cruces",
+"slug": "vila-de-cruces",
+"facilityCount": 9
+},
+{
+"ine": "36060",
+"name": "Vilagarcía de Arousa",
+"slug": "vilagarcia-de-arousa",
+"facilityCount": 48
+},
+{
+"ine": "36061",
+"name": "Vilanova de Arousa",
+"slug": "vilanova-de-arousa",
+"facilityCount": 20
+},
+{
+"ine": "36901",
+"name": "A Illa de Arousa",
+"slug": "a-illa-de-arousa",
+"facilityCount": 6
+},
+{
+"ine": "32002",
+"name": "Amoeiro",
+"slug": "amoeiro",
+"facilityCount": 9
+},
+{
+"ine": "32055",
+"name": "Paderne de Allariz",
+"slug": "paderne-de-allariz",
+"facilityCount": 4
+},
+{
+"ine": "36014",
+"name": "Crecente",
+"slug": "crecente",
+"facilityCount": 6
+},
+{
+"ine": "32062",
+"name": "Porqueira",
+"slug": "porqueira",
+"facilityCount": 2
+},
+{
+"ine": "32057",
+"name": "Parada de Sil",
+"slug": "parada-de-sil",
+"facilityCount": 1
+},
+{
+"ine": "32074",
+"name": "San Amaro",
+"slug": "san-amaro",
+"facilityCount": 2
+},
+{
+"ine": "32058",
+"name": "O Pereiro de Aguiar",
+"slug": "o-pereiro-de-aguiar",
+"facilityCount": 21
+},
+{
+"ine": "32064",
+"name": "Pontedeva",
+"slug": "pontedeva",
+"facilityCount": 2
+},
+{
+"ine": "32059",
+"name": "A Peroxa",
+"slug": "a-peroxa",
+"facilityCount": 6
+},
+{
+"ine": "32072",
+"name": "A Rúa",
+"slug": "a-rua",
+"facilityCount": 10
+},
+{
+"ine": "32061",
+"name": "Piñor",
+"slug": "pinor",
+"facilityCount": 3
+},
+{
+"ine": "32014",
+"name": "A Bola",
+"slug": "a-bola",
+"facilityCount": 1
+},
+{
+"ine": "32063",
+"name": "A Pobra de Trives",
+"slug": "a-pobra-de-trives",
+"facilityCount": 11
+},
+{
+"ine": "32027",
+"name": "Cortegada",
+"slug": "cortegada",
+"facilityCount": 4
+},
+{
+"ine": "32033",
+"name": "Gomesende",
+"slug": "gomesende",
+"facilityCount": 2
+},
+{
+"ine": "32074",
+"name": "San Amaro",
+"slug": "san-amaro",
+"facilityCount": 2
+},
+{
+"ine": "32018",
+"name": "Carballeda de Avia",
+"slug": "carballeda-de-avia",
+"facilityCount": 2
+},
+{
+"ine": "32070",
+"name": "San Xoán de Río",
+"slug": "san-xoan-de-rio",
+"facilityCount": 1
+},
+{
+"ine": "32071",
+"name": "Riós",
+"slug": "rios",
+"facilityCount": 4
+},
+{
+"ine": "32072",
+"name": "A Rúa",
+"slug": "a-rua",
+"facilityCount": 10
+},
+{
+"ine": "32008",
+"name": "Barbadás",
+"slug": "barbadas",
+"facilityCount": 23
+},
+{
+"ine": "32073",
+"name": "Rubiá",
+"slug": "rubia",
+"facilityCount": 6
+},
+{
+"ine": "32077",
+"name": "Sandiás",
+"slug": "sandias",
+"facilityCount": 4
+},
+{
+"ine": "32061",
+"name": "Piñor",
+"slug": "pinor",
+"facilityCount": 3
+},
+{
+"ine": "32080",
+"name": "A Teixeira",
+"slug": "a-teixeira",
+"facilityCount": 2
+},
+{
+"ine": "32081",
+"name": "Toén",
+"slug": "toen",
+"facilityCount": 12
+},
+{
+"ine": "32083",
+"name": "A Veiga",
+"slug": "a-veiga",
+"facilityCount": 7
+},
+{
+"ine": "32085",
+"name": "Verín",
+"slug": "verin",
+"facilityCount": 25
+},
+{
+"ine": "32086",
+"name": "Viana do Bolo",
+"slug": "viana-do-bolo",
+"facilityCount": 10
+},
+{
+"ine": "32076",
+"name": "San Cristovo de Cea",
+"slug": "san-cristovo-de-cea",
+"facilityCount": 4
+},
+{
+"ine": "32088",
+"name": "Vilamartín de Valdeorras",
+"slug": "vilamartin-de-valdeorras",
+"facilityCount": 5
+},
+{
+"ine": "32089",
+"name": "Vilar de Barrio",
+"slug": "vilar-de-barrio",
+"facilityCount": 7
+},
+{
+"ine": "32090",
+"name": "Vilar de Santos",
+"slug": "vilar-de-santos",
+"facilityCount": 4
+},
+{
+"ine": "32091",
+"name": "Vilardevós",
+"slug": "vilardevos",
+"facilityCount": 5
+},
+{
+"ine": "32092",
+"name": "Vilariño de Conso",
+"slug": "vilarino-de-conso",
+"facilityCount": 3
+},
+{
+"ine": "36001",
+"name": "Arbo",
+"slug": "arbo",
+"facilityCount": 5
+},
+{
+"ine": "36040",
+"name": "Portas",
+"slug": "portas",
+"facilityCount": 7
+},
+{
+"ine": "36003",
+"name": "Baiona",
+"slug": "baiona",
+"facilityCount": 18
+},
+{
+"ine": "36051",
+"name": "Sanxenxo",
+"slug": "sanxenxo",
+"facilityCount": 37
+},
+{
+"ine": "36010",
+"name": "Catoira",
+"slug": "catoira",
+"facilityCount": 9
+},
+{
+"ine": "36901",
+"name": "A Illa de Arousa",
+"slug": "a-illa-de-arousa",
+"facilityCount": 6
+},
+{
+"ine": "36032",
+"name": "Moraña",
+"slug": "morana",
+"facilityCount": 10
+},
+{
+"ine": "36008",
+"name": "Cangas",
+"slug": "cangas",
+"facilityCount": 35
+},
+{
+"ine": "36009",
+"name": "A Cañiza",
+"slug": "a-caniza",
+"facilityCount": 15
+},
+{
+"ine": "15072",
+"name": "Rianxo",
+"slug": "rianxo",
+"facilityCount": 22
+},
+{
+"ine": "36013",
+"name": "Covelo",
+"slug": "covelo",
+"facilityCount": 16
+},
+{
+"ine": "36027",
+"name": "Meaño",
+"slug": "meano",
+"facilityCount": 11
+},
+{
+"ine": "36014",
+"name": "Crecente",
+"slug": "crecente",
+"facilityCount": 6
+},
+{
+"ine": "36035",
+"name": "Nigrán",
+"slug": "nigran",
+"facilityCount": 31
+},
+{
+"ine": "36036",
+"name": "Oia",
+"slug": "oia",
+"facilityCount": 14
+},
+{
+"ine": "36015",
+"name": "Cuntis",
+"slug": "cuntis",
+"facilityCount": 9
+},
+{
+"ine": "36016",
+"name": "Dozón",
+"slug": "dozon",
+"facilityCount": 1
+},
+{
+"ine": "36017",
+"name": "A Estrada",
+"slug": "a-estrada",
+"facilityCount": 30
+},
+{
+"ine": "36053",
+"name": "Soutomaior",
+"slug": "soutomaior",
+"facilityCount": 12
+},
+{
+"ine": "36041",
+"name": "Poio",
+"slug": "poio",
+"facilityCount": 22
+},
+{
+"ine": "36018",
+"name": "Forcarei",
+"slug": "forcarei",
+"facilityCount": 8
+},
+{
+"ine": "36043",
+"name": "Ponte Caldelas",
+"slug": "ponte-caldelas",
+"facilityCount": 14
+},
+{
+"ine": "36020",
+"name": "Agolada",
+"slug": "agolada",
+"facilityCount": 4
+},
+{
+"ine": "36035",
+"name": "Nigrán",
+"slug": "nigran",
+"facilityCount": 31
+},
+{
+"ine": "36022",
+"name": "O Grove",
+"slug": "o-grove",
+"facilityCount": 21
+},
+{
+"ine": "36023",
+"name": "A Guarda",
+"slug": "a-guarda",
+"facilityCount": 18
+},
+{
+"ine": "36024",
+"name": "Lalín",
+"slug": "lalin",
+"facilityCount": 22
+},
+{
+"ine": "36044",
+"name": "Pontecesures",
+"slug": "pontecesures",
+"facilityCount": 6
+},
+{
+"ine": "36058",
+"name": "Vilaboa",
+"slug": "vilaboa",
+"facilityCount": 10
+},
+{
+"ine": "36025",
+"name": "A Lama",
+"slug": "a-lama",
+"facilityCount": 7
+},
+{
+"ine": "36026",
+"name": "Marín",
+"slug": "marin",
+"facilityCount": 30
+},
+{
+"ine": "36046",
+"name": "Ribadumia",
+"slug": "ribadumia",
+"facilityCount": 6
+},
+{
+"ine": "36004",
+"name": "Bueu",
+"slug": "bueu",
+"facilityCount": 20
+},
+{
+"ine": "36030",
+"name": "Mondariz",
+"slug": "mondariz",
+"facilityCount": 18
+},
+{
+"ine": "36037",
+"name": "Pazos de Borbén",
+"slug": "pazos-de-borben",
+"facilityCount": 7
+},
+{
+"ine": "36005",
+"name": "Caldas de Reis",
+"slug": "caldas-de-reis",
+"facilityCount": 17
+},
+{
+"ine": "36033",
+"name": "Mos",
+"slug": "mos",
+"facilityCount": 43
+},
+{
+"ine": "36034",
+"name": "As Neves",
+"slug": "as-neves",
+"facilityCount": 11
+},
+{
+"ine": "36039",
+"name": "O Porriño",
+"slug": "o-porrino",
+"facilityCount": 47
+},
+{
+"ine": "36054",
+"name": "Tomiño",
+"slug": "tomino",
+"facilityCount": 26
+},
+{
+"ine": "36040",
+"name": "Portas",
+"slug": "portas",
+"facilityCount": 7
+},
+{
+"ine": "36027",
+"name": "Meaño",
+"slug": "meano",
+"facilityCount": 11
+},
+{
+"ine": "36055",
+"name": "Tui",
+"slug": "tui",
+"facilityCount": 33
+},
+{
+"ine": "36042",
+"name": "Ponteareas",
+"slug": "ponteareas",
+"facilityCount": 72
+},
+{
+"ine": "36043",
+"name": "Ponte Caldelas",
+"slug": "ponte-caldelas",
+"facilityCount": 14
+},
+{
+"ine": "36006",
+"name": "Cambados",
+"slug": "cambados",
+"facilityCount": 11
+},
+{
+"ine": "36047",
+"name": "Rodeiro",
+"slug": "rodeiro",
+"facilityCount": 5
+},
+{
+"ine": "36048",
+"name": "O Rosal",
+"slug": "o-rosal",
+"facilityCount": 11
+},
+{
+"ine": "36039",
+"name": "O Porriño",
+"slug": "o-porrino",
+"facilityCount": 47
+},
+{
+"ine": "36042",
+"name": "Ponteareas",
+"slug": "ponteareas",
+"facilityCount": 72
+},
+{
+"ine": "36022",
+"name": "O Grove",
+"slug": "o-grove",
+"facilityCount": 21
+},
+{
+"ine": "36052",
+"name": "Silleda",
+"slug": "silleda",
+"facilityCount": 13
+},
+{
+"ine": "36058",
+"name": "Vilaboa",
+"slug": "vilaboa",
+"facilityCount": 10
+},
+{
+"ine": "36007",
+"name": "Campo Lameiro",
+"slug": "campo-lameiro",
+"facilityCount": 4
+}
+]

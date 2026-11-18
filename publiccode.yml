@@ -1,0 +1,59 @@
+publiccodeYmlVersion: "0.4"
+name: Pista Aberta
+url: https://github.com/Pista-Aberta/pista-aberta
+landingURL: https://pistaaberta.com
+softwareVersion: "0.1.0"
+releaseDate: "2026-11-14"
+platforms:
+  - web
+categories:
+  - collaboration
+  - facility-management
+  - online-booking
+developmentStatus: beta
+softwareType: standalone/web
+description:
+  gl:
+    shortDescription: >-
+      Plataforma libre de xestión e reserva de instalacións deportivas municipais.
+    longDescription: >-
+      Pista Aberta permite aos concellos galegos xestionar e ofrecer en liña
+      as súas instalacións deportivas: consulta, reserva con QR, panel municipal
+      e módulo de pavillóns/clubs. Multi-concello, autoaloxable (Docker Compose),
+      autenticación con certificado dixital (FNMT/DNIe, mTLS+OCSP), Cl@ve
+      (SAML 2.0 eIDAS) e correo+OTP. Inclúe partidos abertos («busco xente»).
+    features:
+      - Reserva cidadá con QR
+      - Multi-concello
+      - Módulo de pavillóns e clubs
+      - Certificado dixital FNMT/DNIe (mTLS + OCSP)
+      - Acceso SAML (Cl@ve demo) e correo+OTP
+      - Partidos abertos
+  es:
+    shortDescription: >-
+      Plataforma libre de gestión y reserva de instalaciones deportivas municipales.
+    longDescription: >-
+      Pista Aberta permite a los concellos gallegos gestionar y ofrecer en línea
+      sus instalaciones deportivas. Multi-concello, autoalojable, autenticación
+      con certificado digital (FNMT/DNIe, mTLS+OCSP), Cl@ve (SAML 2.0 eIDAS) y
+      correo+OTP. Incluye partidos abiertos («busco gente»).
+    features:
+      - Reserva ciudadana con QR
+      - Multi-concello
+      - Módulo de pabellones y clubs
+      - Certificado digital FNMT/DNIe (mTLS + OCSP)
+      - Acceso SAML (Cl@ve demo) y correo+OTP
+      - Partidos abiertos
+legal:
+  license: EUPL-1.2
+  mainCopyrightOwner: Pablo López Núñez
+localisation:
+  localisationReady: true
+  availableLanguages:
+    - gl
+    - es
+maintenance:
+  type: community
+  contacts:
+    - name: Pablo López Núñez
+      email: info@saci.gal

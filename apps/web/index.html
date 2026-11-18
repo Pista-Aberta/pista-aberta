@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="gl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#007BC4" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <title>Pista Aberta</title>
+    <!-- Manifest / apple-touch antes de React se a URL é /c/<slug>… -->
+    <script>
+      (function () {
+        try {
+          var m = location.pathname.match(/^\/c\/([a-z0-9-]+)(?:\/|$)/i);
+          if (!m) return;
+          var slug = m[1];
+          var pretty = slug
+            .split("-")
+            .map(function (w) {
+              return w ? w.charAt(0).toUpperCase() + w.slice(1) : w;
+            })
+            .join(" ");
+          var manifest = document.querySelector('link[rel="manifest"]');
+          if (manifest) {
+            manifest.setAttribute(
+              "href",
+              "/api/c/" + slug + "/manifest.webmanifest"
+            );
+          }
+          var touch = document.querySelector('link[rel="apple-touch-icon"]');
+          if (!touch) {
+            touch = document.createElement("link");
+            touch.rel = "apple-touch-icon";
+            document.head.appendChild(touch);
+          }
+          touch.href = "/api/c/" + slug + "/icon-180.png";
+          var title = document.querySelector(
+            'meta[name="apple-mobile-web-app-title"]'
+          );
+          if (!title) {
+            title = document.createElement("meta");
+            title.name = "apple-mobile-web-app-title";
+            document.head.appendChild(title);
+          }
+          title.content = pretty;
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body class="bg-paper text-ink antialiased">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

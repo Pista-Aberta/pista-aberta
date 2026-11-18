@@ -1,0 +1,145 @@
+# App detrás de Traefik (proxy): HTTP :80
+# - APP_HOST (demo pública): web/api
+# - ROOT_HOST / www: a landing pública vía upstream pa_landing
+# Variables: ROOT_HOST APP_HOST CERT_HOST PROXY_SUBNET (envsubst).
+
+limit_req_zone $binary_remote_addr zone=pa_req:10m rate=20r/s;
+
+upstream pa_web {
+  server web:80;
+}
+upstream pa_api {
+  server api:3001;
+}
+upstream pa_landing {
+  server landing:80;
+}
+upstream pa_mailpit {
+  server mailpit:8025;
+}
+
+# IP real detrás de Traefik (rede proxy = 10.0.1.0/24 no servidor).
+set_real_ip_from ${PROXY_SUBNET};
+real_ip_header   X-Forwarded-For;
+real_ip_recursive on;
+
+# ——— cert.* por HTTP: só ACME ———
+server {
+  listen 80;
+  server_name ${CERT_HOST};
+  location ^~ /.well-known/acme-challenge/ {
+    root /var/www/acme;
+  }
+  location / { return 404; }
+}
+
+# ——— Landing pública: ROOT + www (indexable) ———
+server {
+  listen 80;
+  server_name ${ROOT_HOST} www.${ROOT_HOST};
+  client_max_body_size 2m;
+
+  add_header X-Content-Type-Options "nosniff" always;
+  add_header X-Frame-Options "DENY" always;
+  add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+  add_header Permissions-Policy "camera=(), microphone=(), geolocation=()" always;
+  add_header Content-Security-Policy "default-src 'self'; script-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'" always;
+  add_header Strict-Transport-Security "max-age=31536000" always;
+  add_header X-Robots-Tag "index, follow" always;
+
+  location ^~ /.well-known/acme-challenge/ {
+    root /var/www/acme;
+  }
+
+  location / {
+    proxy_pass http://pa_landing;
+    proxy_http_version 1.1;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+  }
+}
+
+# ——— Demo pública APP_HOST ———
+server {
+  listen 80 default_server;
+  server_name ${APP_HOST} _;
+  client_max_body_size 10m;
+
+  add_header X-Content-Type-Options "nosniff" always;
+  add_header X-Frame-Options "DENY" always;
+  add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+  add_header Permissions-Policy "camera=(self), microphone=(), geolocation=()" always;
+  add_header X-DNS-Prefetch-Control "off" always;
+  add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'self'; media-src 'self' blob:; frame-ancestors 'none'; base-uri 'self'; form-action 'self'" always;
+  add_header Strict-Transport-Security "max-age=31536000" always;
+
+  location ^~ /.well-known/acme-challenge/ {
+    root /var/www/acme;
+  }
+  location = /robots.txt {
+    default_type text/plain;
+    return 200 "User-agent: *\nDisallow: /\n";
+  }
+
+  include /etc/nginx/common-auth.conf;
+
+  location = /auth/cert/callback { return 404; }
+
+  location /health {
+    proxy_pass http://pa_api;
+    proxy_http_version 1.1;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header X-PA-Cert-Verify  "";
+    proxy_set_header X-PA-Cert         "";
+    proxy_set_header X-PA-Gateway-Auth "";
+  }
+
+  location /api/ {
+    proxy_pass http://pa_api;
+    proxy_http_version 1.1;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header X-PA-Cert-Verify  "";
+    proxy_set_header X-PA-Cert         "";
+    proxy_set_header X-PA-Gateway-Auth "";
+  }
+
+  location /auth/ {
+    proxy_pass http://pa_api;
+    proxy_http_version 1.1;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header X-PA-Cert-Verify  "";
+    proxy_set_header X-PA-Cert         "";
+    proxy_set_header X-PA-Gateway-Auth "";
+  }
+
+  # REVISION-22 A9: bandexa Mailpit da demo
+  location /correo/ {
+    proxy_pass http://pa_mailpit/correo/;
+    proxy_http_version 1.1;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header X-Forwarded-Prefix /correo;
+  }
+
+  location / {
+    proxy_pass http://pa_web;
+    proxy_http_version 1.1;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+  }
+}

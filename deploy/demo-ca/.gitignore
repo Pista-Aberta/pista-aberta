@@ -1,0 +1,8 @@
+*.key
+ocsp.key
+*.csr
+index.txt
+index.txt.attr
+serial
+*.srl
+demo-ca.srl

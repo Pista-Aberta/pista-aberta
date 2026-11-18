@@ -1,0 +1,82 @@
+# SÓ caso C (80/443 libres, sen Traefik). Non usar no servidor (proxy).
+# Variables: APP_HOST ROOT_HOST
+
+server {
+  listen 443 ssl;
+  http2 on;
+  server_name ${APP_HOST};
+  client_max_body_size 10m;
+
+  ssl_certificate     /etc/letsencrypt/live/${APP_HOST}/fullchain.pem;
+  ssl_certificate_key /etc/letsencrypt/live/${APP_HOST}/privkey.pem;
+  ssl_protocols TLSv1.2 TLSv1.3;
+
+  add_header Strict-Transport-Security "max-age=31536000" always;
+  add_header X-Content-Type-Options "nosniff" always;
+  add_header X-Frame-Options "DENY" always;
+  add_header X-Robots-Tag "noindex, nofollow" always;
+
+  include /etc/nginx/common-auth.conf;
+
+  location = /auth/cert/callback { return 404; }
+
+  location /health {
+    proxy_pass http://api:3001;
+    proxy_http_version 1.1;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-Proto https;
+    proxy_set_header X-PA-Cert-Verify  "";
+    proxy_set_header X-PA-Cert         "";
+    proxy_set_header X-PA-Gateway-Auth "";
+  }
+
+  location /api/ {
+    proxy_pass http://api:3001;
+    proxy_http_version 1.1;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-Proto https;
+    proxy_set_header X-PA-Cert-Verify  "";
+    proxy_set_header X-PA-Cert         "";
+    proxy_set_header X-PA-Gateway-Auth "";
+  }
+
+  location /auth/ {
+    proxy_pass http://api:3001;
+    proxy_http_version 1.1;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-Proto https;
+    proxy_set_header X-PA-Cert-Verify  "";
+    proxy_set_header X-PA-Cert         "";
+    proxy_set_header X-PA-Gateway-Auth "";
+  }
+
+  # REVISION-22 A9
+  location /correo/ {
+    proxy_pass http://mailpit:8025/correo/;
+    proxy_http_version 1.1;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-Proto https;
+  }
+
+  location = /index.html {
+    proxy_pass http://web:80;
+    proxy_http_version 1.1;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-Proto https;
+    add_header Cache-Control "no-cache, no-store, must-revalidate" always;
+    add_header Pragma "no-cache" always;
+  }
+
+  location / {
+    proxy_pass http://web:80;
+    proxy_http_version 1.1;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-Proto https;
+  }
+}

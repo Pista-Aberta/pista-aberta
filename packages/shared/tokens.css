@@ -1,0 +1,181 @@
+/**
+ * Deseño v3 — tokens (docs/DESENO-V3.md).
+ * Único sitio con hex literais da marca.
+ */
+:root {
+  /* Marca (inspirada na identidade da Xunta; NON é o seu logotipo) */
+  --pa-azul: #007BC4;
+  --pa-azul-700: #005A93;
+  --pa-marino: #002B4A;
+  --pa-marino-mid: #00487A;
+  --pa-marino-2: #0B3A5E;
+  --pa-celeste: #7CC8F2;
+  --pa-azul-50: #E6F2FA;
+  --pa-azul-25: #F0F6FB;
+
+  /* Hero claro v3 + ámbar de marca */
+  --pa-hero: #E8F2FA;
+  --pa-hero-line: #CFE3F2;
+  --pa-hero-ink: #3B4D5E;
+  --pa-ambar: #F2B33D;
+  --pa-ambar-texto: #8A5300;
+  --pa-ambar-ink: #6B4100;
+  --pa-ambar-bg: #FFF4DF;
+
+  /* Neutros fríos */
+  --pa-bg: #F4F7FA;
+  --pa-surface: #FFFFFF;
+  --pa-line: #D8E3EC;
+  --pa-line-2: #C5D4E1;
+  --pa-ink: #0F1E2C;
+  --pa-graphite: #4A5B6B;
+  /* Refs .dc.html */
+  --pa-seg-track: #E6EEF5;
+  --pa-muted-2: #3B4D5E;
+  --pa-on-marino: #CFE3F2;
+  --pa-on-dark: #FFFFFF;
+  /* Canais RGB para Tailwind /alpha (hover:bg-on-dark/10). */
+  --pa-on-dark-rgb: 255 255 255;
+  --pa-on-marino-rgb: 207 227 242;
+
+  /* Estados */
+  --pa-libre: #0E6B4D;
+  --pa-libre-bg: #EAF7F1;
+  --pa-libre-bd: #3BA57E;
+  --pa-ocupada-bg: #E3E9EF;
+  /* Rev24 C6: mesmo token que graphite (antes #556575 case idéntico). */
+  --pa-ocupada: var(--pa-graphite);
+  --pa-aviso: #8A5300;
+  --pa-aviso-bg: #FFF4DF;
+  --pa-aviso-bd: #F2B33D;
+  --pa-aviso-ink: #6B4100;
+  --pa-erro: #A32020;
+  --pa-erro-bg: #FDECEC;
+
+  /* Tons CourtArt (PortadaV2PC) */
+  --pa-court-padel: #005A93;
+  --pa-court-pav: #0B3A5E;
+  --pa-court-futbol: #2C7DB5;
+
+  /* Mapa coroplético v2 (LandingV2PC §7) */
+  --pa-map-0: #14466C;
+  --pa-map-1: #1D5A86;
+  --pa-map-2: #2C7DB5;
+  --pa-map-3: #4FA6DD;
+  --pa-map-4: #9AD4F5;
+  --pa-map-stroke: #002B4A;
+  --pa-map-pin: #F2B33D;
+  --pa-map-point: #7CC8F2;
+  --pa-map-sel: #FFFFFF;
+  --pa-map-hero: #004B7F;
+  --pa-marino-grad-mid: #013A63;
+  --pa-chrome: #E9EFF5;
+
+  /* Rev24 C1–C5: radios e anchos de sistema */
+  --pa-r-sm: 10px;
+  --pa-r: 12px;
+  --pa-r-lg: 20px;
+  --pa-r-xl: 28px;
+  --pa-content-wide: 1200px;
+  --pa-content-read: 720px;
+  --pa-btn-h: 44px;
+  --pa-btn-h-sm: 36px;
+  --pa-btn-text: 15px;
+  --pa-h1: 36px;
+  --pa-h1-mobile: 28px;
+  --pa-h1-hero: 46px;
+  --pa-h1-hero-mobile: 32px;
+  --pa-sombra: 0 18px 36px -24px rgba(0, 43, 74, 0.5);
+  --pa-sombra-alta: 0 30px 60px -36px rgba(0, 43, 74, 0.55);
+  --pa-sombra-seg: 0 6px 14px -10px rgba(0, 43, 74, 0.6);
+  --pa-sombra-sheet: 0 -18px 40px -24px rgba(0, 43, 74, 0.45);
+  --pa-sombra-tab: 0 16px 40px -18px rgba(0, 43, 74, 0.55);
+
+  /* Móbil: barra de pestanas flotante (PortadaV2M) */
+  --pa-mobile-tab-h: 68px;
+  --pa-mobile-tab-inset: 12px;
+
+  /* Cor do concello: só no escudo. Por defecto azul. */
+  --pa-brand: var(--pa-azul);
+  --pa-accent: var(--pa-brand);
+
+  /* Aliases de compatibilidade */
+  --pa-area: var(--pa-azul-25);
+  --pa-input: var(--pa-line-2);
+  --pa-border2: var(--pa-line-2);
+  --pa-ok-bg: var(--pa-libre-bg);
+  --pa-warn-bg: var(--pa-aviso-bg);
+  --pa-warn-border: var(--pa-aviso-bd);
+  --pa-warn-text: var(--pa-aviso);
+  --pa-danger: var(--pa-erro);
+  --pa-closed: var(--pa-ocupada-bg);
+  --pa-radius-card: var(--pa-r-lg);
+  --pa-radius-btn: var(--pa-r);
+  --pa-radius-chip: var(--pa-r-sm);
+}
+
+html[data-contrast="high"] {
+  --pa-bg: #ffffff;
+  --pa-surface: #ffffff;
+  --pa-ink: #000000;
+  --pa-graphite: #000000;
+  --pa-brand: #000000;
+  --pa-accent: #000000;
+  --pa-azul: #000000;
+  --pa-azul-700: #000000;
+  --pa-marino: #000000;
+  --pa-marino-mid: #000000;
+  --pa-marino-2: #000000;
+  --pa-celeste: #ffffff;
+  --pa-azul-50: #ffffff;
+  --pa-azul-25: #ffffff;
+  --pa-line: #000000;
+  --pa-line-2: #000000;
+  --pa-seg-track: #ffffff;
+  --pa-muted-2: #000000;
+  /* Texto sobre panel negro: branco (antes negro→negro). */
+  --pa-on-marino: #ffffff;
+  --pa-on-dark: #ffffff;
+  --pa-on-dark-rgb: 255 255 255;
+  --pa-on-marino-rgb: 255 255 255;
+  --pa-area: #ffffff;
+  --pa-input: #000000;
+  --pa-border2: #000000;
+  --pa-libre: #000000;
+  --pa-libre-bg: #ffffff;
+  --pa-libre-bd: #000000;
+  --pa-ocupada-bg: #e8e8e8;
+  --pa-ocupada: #000000;
+  --pa-aviso: #000000;
+  --pa-aviso-bg: #ffffff;
+  --pa-aviso-bd: #000000;
+  --pa-aviso-ink: #000000;
+  --pa-erro: #000000;
+  --pa-erro-bg: #ffffff;
+  --pa-court-padel: #000000;
+  --pa-court-pav: #000000;
+  --pa-court-futbol: #000000;
+  --pa-map-0: #ffffff;
+  --pa-map-1: #ffffff;
+  --pa-map-2: #ffffff;
+  --pa-map-3: #ffffff;
+  --pa-map-4: #ffffff;
+  --pa-map-stroke: #000000;
+  --pa-map-pin: #000000;
+  --pa-map-point: #000000;
+  --pa-map-sel: #ffffff;
+  --pa-map-hero: #000000;
+  --pa-marino-grad-mid: #000000;
+  --pa-chrome: #ffffff;
+  --pa-ok-bg: #ffffff;
+  --pa-warn-bg: #ffffff;
+  --pa-warn-border: #000000;
+  --pa-warn-text: #000000;
+  --pa-danger: #000000;
+  --pa-closed: #ffffff;
+  --pa-sombra: none;
+  --pa-sombra-alta: none;
+  --pa-sombra-seg: none;
+  --pa-sombra-sheet: none;
+  --pa-sombra-tab: none;
+}

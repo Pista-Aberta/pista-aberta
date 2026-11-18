@@ -1,0 +1,134 @@
+# Pista Aberta — demo VPS
+# Uso: docker compose -f docker-compose.vps.yml --env-file .env.vps up -d --build
+# Único publish: 127.0.0.1:3140 → gateway. Postgres sen ports ao host.
+
+name: pista-aberta
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: pista
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-pista}
+      POSTGRES_DB: pista_aberta
+    volumes:
+      - pista_pgdata:/var/lib/postgresql/data
+    networks:
+      - pista-aberta_internal
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U pista -d pista_aberta"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+    deploy:
+      resources:
+        limits:
+          cpus: "0.50"
+          memory: 512M
+    restart: unless-stopped
+    # Sen ports — só rede interna
+
+  mailpit:
+    image: axllent/mailpit:v1.27.10
+    environment:
+      MP_WEBROOT: /correo/
+      MP_HIDE_DELETE_ALL_BUTTON: "true"
+    networks:
+      - pista-aberta_internal
+    deploy:
+      resources:
+        limits:
+          cpus: "0.25"
+          memory: 128M
+    restart: unless-stopped
+    # Sen ports ao host — UI vía gateway /correo/ (REVISION-22 A9)
+
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    environment:
+      DATABASE_URL: postgres://pista:${POSTGRES_PASSWORD:-pista}@postgres:5432/pista_aberta
+      FORCE_POSTGRES: "1"
+      SMTP_HOST: mailpit
+      SMTP_PORT: 1025
+      SMTP_FROM: noreply@pistaaberta.local
+      API_HOST: 0.0.0.0
+      API_PORT: 3001
+      TZ: Europe/Madrid
+      APP_BASE_URL: ${APP_BASE_URL}
+      API_BASE_URL: ${API_BASE_URL}
+      LANDING_ORIGIN: ${LANDING_ORIGIN:-https://pistaaberta.com}
+      SESSION_SECRET: ${SESSION_SECRET}
+      PA_DEMO: "1"
+      NODE_ENV: demo
+      TRUST_PROXY: ${TRUST_PROXY:-1}
+      SAML_VALIDATE_IN_RESPONSE_TO: never
+      SAML_SP_ENTITY_ID: ${SAML_SP_ENTITY_ID}
+      SAML_IDP_ENTITY_ID: ${SAML_IDP_ENTITY_ID}
+      SAML_IDP_SSO_URL: ${SAML_IDP_SSO_URL}
+      SAML_CALLBACK_URL: ${SAML_CALLBACK_URL}
+      # Certificado dixital: co overlay dominio.yml estes valores veñen de .env.dominio
+      CERT_LOGIN_ENABLED: ${CERT_LOGIN_ENABLED:-}
+      CERT_ORIGIN: ${CERT_ORIGIN:-}
+      CERT_GATEWAY_SECRET: ${CERT_GATEWAY_SECRET:-}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      mailpit:
+        condition: service_started
+    networks:
+      - pista-aberta_internal
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 1024M
+    restart: unless-stopped
+    # Sen publish — só vía gateway
+
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+      args:
+        # Same-origin vía gateway (VITE_API_URL baleiro)
+        VITE_API_URL: ""
+        VITE_PA_DEMO: "1"
+        VITE_REPO_URL: "${VITE_REPO_URL:-}"
+    networks:
+      - pista-aberta_internal
+    deploy:
+      resources:
+        limits:
+          cpus: "0.25"
+          memory: 128M
+    restart: unless-stopped
+
+  gateway:
+    image: nginx:1.27.5-alpine
+    volumes:
+      - ./deploy/vps/nginx-gateway.conf:/etc/nginx/conf.d/default.conf:ro
+    ports:
+      - "127.0.0.1:3140:80"
+    depends_on:
+      - api
+      - web
+      - mailpit
+    networks:
+      - pista-aberta_internal
+    deploy:
+      resources:
+        limits:
+          cpus: "0.25"
+          memory: 64M
+    restart: unless-stopped
+
+networks:
+  pista-aberta_internal:
+    driver: bridge
+    name: pista-aberta_internal
+
+volumes:
+  pista_pgdata:
+    name: pista-aberta_pgdata
